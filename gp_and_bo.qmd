@@ -31,4 +31,4 @@ author:
 
 - Agnihotri and Batra, 2020. “Exploring Bayesian Optimization.” *Distill*. https://doi.org/10.23915/distill.00026.
 - Garnett, 2023. Bayesian Optimization. Cambridge University Press.
-- Rasmussen and Williams. 2006. Gaussian Processes for Machine Learning. MIT Press.
+- Rasmussen and Williams, 2006. Gaussian Processes for Machine Learning. MIT Press.
