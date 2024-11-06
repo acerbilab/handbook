@@ -15,9 +15,11 @@ book:
     - part: HPC resources
       chapters:
         - hpc_intro.qmd
-    - gp_and_bo.qmd
-    - seminars.qmd
-    - contributing.qmd
+    - part: Research topics
+        - gp_and_bo.qmd
+        - seminars.qmd
+    - part: Other info
+        - contributing.qmd
     - references.qmd
 
 number-depth: 1
