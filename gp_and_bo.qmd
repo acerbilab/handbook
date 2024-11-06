@@ -26,3 +26,9 @@ author:
 ### Slack Channel
 
 - Join and check out the **#gaussian-processes** channel on the lab Slack.
+
+### Bibliography
+
+- Agnihotri and Batra, 2020. “Exploring Bayesian Optimization.” *Distill*. https://doi.org/10.23915/distill.00026.
+- Garnett, 2023. Bayesian Optimization. Cambridge University Press.
+- Rasmussen and Williams. 2006. Gaussian Processes for Machine Learning. MIT Press.
