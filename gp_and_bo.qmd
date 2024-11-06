@@ -27,4 +27,4 @@ author:
 
 - Join and check out the **#gaussian-processes** channel on the lab Slack.
 
-### Bibliography
+### References
