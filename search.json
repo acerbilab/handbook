@@ -71,6 +71,7 @@
     "section": "",
     "text": "Gaussian Processes\n\nGortler et al. (2019). A Visual Exploration of Gaussian Processes. Distill\nVideos and tutorials from the Gaussian Process Summer School: GPSS 2021 Program\n\nStart with the first video, “Intro to GPs”, and the sessions on “Kernel Design” and “Representation Learning with GPs” (other videos can be explored later as time permits).\n\nTutorials/workshops (Jupyter notebooks): GPSS 2021 Labs\nThe GP Bible by Rasmussen and Williams (2006): Gaussian Processes for Machine Learning\n\n\n\nBayesian Optimization\n\nExploring Bayesian Optimization (Agnihotri and Batra 2020). Distill\nFrazier (2018). A Tutorial on Bayesian Optimization. arXiv\nVideo: “Introduction to Bayesian Optimization” from the Gaussian Process Summer School, Day 3: GPSS 2021 Day 3\nThe Bayesian Optimization Book by Garnett (2023): BayesOptBook\n\n\n\nSlack Channel\n\nJoin and check out the #gaussian-processes channel on the lab Slack.\n\n\n\n\n\nAgnihotri, Apoorv, and Nipun Batra. 2020. “Exploring Bayesian Optimization.” Distill. https://doi.org/10.23915/distill.00026.\n\n\nGarnett, Roman. 2023. Bayesian Optimization. Cambridge University Press.",
     "crumbs": [
+      "Research topics",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Resources for Gaussian processes and Bayesian optimization</span>"
     ]
   },
@@ -81,6 +82,7 @@
     "section": "",
     "text": "Ongoing\nAalto Seminar on Advances in Probabilistic Machine Learning [APML]\nMachine Learning Coffee seminars\nSeminar on Gaussian Processes, Spatiotemporal Modeling, and Decision-making Systems",
     "crumbs": [
+      "Research topics",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Seminars</span>"
     ]
   },
@@ -91,6 +93,7 @@
     "section": "",
     "text": "Simply write a (q)markdown file like this one and add the filename (e.g., contributing.qmd) under the field book: chapters: in _quarto.yml . Then make a pull request to merge your changes to the handbook’s repo.\nFor other advanced usages, refer to Quarto documentation.",
     "crumbs": [
+      "Other info",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing guide</span>"
     ]
   },
