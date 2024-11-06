@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Lab Handbook",
+    "section": "",
+    "text": "Introduction\nLab handbook of the Machine and Human Intelligence group at the University of Helsinki.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "packaging.html",
+    "href": "packaging.html",
+    "title": "How to publish Python packages",
+    "section": "",
+    "text": "Publishing on PyPI\nPublishing a package on PyPI is generally simpler than publish on conda-forge, and it’s easiest to use the PyPI package as the source for a conda-forge recipe anyway, so it’s best to start here. More details can be found here.\nSee here for some details about semantic versioning.\n4. Install Python build tools. It’s probably a good idea to create a new environment for the whole build and packaging process.\n(from the project directory)\n6. This should create a directory dist/ with .whl and .tar.gz files matching your package name and tagged version. Inspect these files and make sure that they contain the contents you expect. By default this should be the source directory corresponding to your project’s name, e.g. /pyvbmc. If you are missing files that should be there, then see the link above (https://setuptools.pypa.io/en/latest/userguide/datafiles.html) regarding package-data and MANIFEST.in.\n7. You can also run twine check dist/* to ensure that the package name and description will render properly on PyPI.\n8. If everything looks correct, test out the build by creating a new environment and running pip install dist/*.whl to install the packaged version and test it out. For example, you could run the tests with pytest --pyargs your-package (do this from somewhere outside the project directory, to ensure that pytest is finding the version you just installed, and not the local tests). You could also open a Python REPL and just ensure that your package imports. You may need to open a new shell before the installation can be found on your path.\nThe --extra-index-urltells pip to also look at the regular PyPI repository, which is important if your package has dependencies which are not on the test repo (this is likely the case).\n10. If everything looks good on the test repository, you can run twine upload dist/* to upload to the official repository (you will need an account there as well, separate from your test account). Be aware that while a version of a package can be deleted from PyPI (so that it is no longer available), that same version number can never be re-uploaded. So it pays to double-check.\n11. Once uploaded, you should be able to run pip install your-package!",
+    "crumbs": [
+      "Python tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How to publish Python packages</span>"
+    ]
+  },
+  {
+    "objectID": "packaging.html#publishing-on-pypi",
+    "href": "packaging.html#publishing-on-pypi",
+    "title": "How to publish Python packages",
+    "section": "",
+    "text": "Make sure your package dependencies are all correctly specified, e.g. by creating a new Conda environment and running pip install -e . from an up-to-date source and ensuring that all tests pass. Dependencies should be specified with a lower bound, rather than pinned to a specific version, for maximum compatibility.\n\nThere are a few different ways to specify project dependencies, but the most modern is with a pyproject.toml file in the root of the project directory. This is what we have used for PyVBMC and GPyReg, this guide may need to be adapted if you are using a different method. From what I understand, it is also good practice to leave a “stub” in setup.py for backwards compatibility, as in here.\n\nMake sure pyproject.toml contains the appropriate lines. These are taken from PyVBMC, so they may not all be required for your project, but this is a starting point. You may also already have a pyproject.toml with other information in it, such as configurations for the Black formatter. That’s fine, those sections can remain.\n\n# pyproject.toml\n#\n[project]\nname = \"PyVBMC\"  # Naming a project is required\ndynamic = [\"version\"]  # use git tags for version, via setuptools_scm\n# If you don't want to use setuptools_scm, you can specify the version\n# manually:\n# version = \"v1.0.0\"\ndescription = \"Variational Bayesian Monte Carlo in Python.\"\nreadme = \"README.md\"\nlicense = { file = \"LICENSE\" }\ndependencies = [\n    \"cma &gt;= 3.1.0\",\n    \"corner &gt;= 2.2.1\",\n    # ...\n]\nrequires-python = \"&gt;=3.9\"\n#\n[tool.setuptools]\ninclude-package-data = true\n# We want to include some files which are not in the source directory,\n# such as the Jupyter Notebooks in /examples.\n# See https://setuptools.pypa.io/en/latest/userguide/datafiles.html\n# for more info.\npackages = [\"pyvbmc\", \"pyvbmc.examples\"]\npackage-dir = {\"pyvbmc.examples\" = \"examples\"}\n#\n[tool.setuptools.package-data]\n# Specify the extensions to include as data:\n\"pyvbmc.examples\" = [\"*.ipynb\"]\n#  Including files which *are* in the source directory but are not\n# .py files can also be accomplished with a MANIFEST.in file. See\n# e.g. https://github.com/acerbilab/pyvbmc/blob/main/MANIFEST.in\n#\n[project.optional-dependencies]\ndev = [\n    \"myst_nb &gt;= 0.13.1\",\n    \"numpydoc &gt;= 1.2.1\",\n    # ...\n]  # These dependencies are for developers. They will only be installed\n# with `pip install pyvbmc[dev]` (or `pip install .[dev]`, locally).\n# You can specify other sets of optional dependencies similarly.\n#\n[build-system]\n# Required for using setuptools.scm, which automatically assigns the\n# version number based on Git tags.\nrequires = [\n    \"setuptools &gt;= 45\",\n    \"setuptools_scm[toml] &gt;= 6.2\",\n]\nbuild-backend = \"setuptools.build_meta\"\n\nsetuptools_scm is a tool which extracts versioning info from Git tags, so that you don’t have to manually specify package versions.\n\n\nTag the current commit as a release version with\n\ngit tag vX.Y.Z\n\nconda create -n build-env  # optional, but recommended\nconda activate build-env # if you created build-env, otherwise make sure you have activated your environment\npip install setuptools-scm\npip install build\npip install twine\n\nBuild your package:\n\npython -m build\n\nconda create -n test-package-release\nconda activate test-package-release\npip install dist/*.whl\ncd ~ # Test the build package outside the working directory. \npytest --pyargs your-package\n# Ensure later to come back to the project working directory\n\nIf everything checks out and you are ready to upload, first head to https://test.pypi.org/ and register an account if you don’t already have one. Then you can test uploading your package by running twine upload --repository testpypi dist/* from the project directory. Your package should then be visible under your account on the test repository, and you can make sure that the description and other info are correct. You can also attempt to install it with\n\npython3 -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ your-package\n\n\nOther notes\n\nYou can add another user as an owner or maintainer of a project through your account at https://pypi.org/\nOptionally, you may also want to list the package version on GitHub. You can do this by pushing the version tag(s) to the origin with git push --tags, then selecting the tag from https://github.com/account-name/repo-name/tags and clicking “Create release”. You can describe the release, and optionally upload the built .whl and .tar.gz files.",
+    "crumbs": [
+      "Python tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How to publish Python packages</span>"
+    ]
+  },
+  {
+    "objectID": "packaging.html#uploading-to-conda-forge",
+    "href": "packaging.html#uploading-to-conda-forge",
+    "title": "How to publish Python packages",
+    "section": "Uploading to conda-forge",
+    "text": "Uploading to conda-forge\nUploading to conda-forge is slightly more involved. Detailed instructions can be found here, but here is a summary of steps:\n\nFork the conda-forge staged-recipes repository from GitHub, and clone the fork locally. Checkout a new branch, e.g. pyvbmc-recipe, then cd into the staged-recipes/recipes/ directory.\nInstall grayskull with pip install grayskull (or conda install -c conda-forge grayskull). Grayskull is a utility which will help generate the appropriate metadata for your package.\nIf your package is already on PyPI, you can run grayskull pypi --strict-conda-forge your-package to generate a conda-forge recipe for your package. It should create the file staged-recipes/recipes/your-package/meta.yaml.\nEverything should be filled in automatically (though it’s good to double-check), with the exception of\n\n|about:\n|  home: https://acerbilab.github.io/pyvbmc/\n|    \n\n|extra:\n|  recipe-maintainers:\n|    - AddYourGitHubIdHere\n(ignore the vertical bars, Colab won’t let me include leading spaces without them). You can also add other people as recipe maintainers, with their permission. It just means they will receive automated PRs and other updates regarding the project from conda-forge, and possibly answer any questions that pop up. 5. Optionally, you can add documentation and development URLs to the about: section, e.g.\n|about:\n|  home: https://acerbilab.github.io/pyvbmc/\n|  description: |\n|    PyVBMC is a Python implementation of the Variational Bayesian Monte Carlo (VBMC) algorithm for posterior and model inference.\n|  doc_url: https://acerbilab.github.io/pyvbmc/\n|  dev_url: https://github.com/acerbilab/pyvbmc/\n|  ...\n\nOptionally, you can include commands in the test section of the meta.yaml recipe, which will be automatically run when conda-forge updates the package. The pyvbmc test suite is quite expensive to run, so I elected to just include the default basic tests here, which just ensure that the package can be imported.\nOnce you think everything is correct (see a checklist here), you can commit the changes to your new branch, push them to GitHub, and then open a PR to merge your fork to the original staged-recipes repo. Fill out the template checklist which appears when you draft the PR.\nOnce you’ve opened the PR, the conda-forge automation will check your recipe and attempt to install the package. Correct any errors that occur, and comment on GitHub with @conda-forge-admin, please restart ci to re-run the automated checks.\nOnce the automated checks all pass, you can ping a member of the conda-forge team to review and approve the PR with @conda-forge-admin, please ping conda-forge/help-python.\nAfter the PR is merged, it will take a few hours (and possibly up to 24) for the package to become available on the Conda servers. After that conda install --channel=conda-forge your-package should work!\nA repo will be created at conda-forge/your-package-feedstock, and you and any other recipe maintainers will be added to it. This is where automated PRs regarding your package will be issued.",
+    "crumbs": [
+      "Python tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How to publish Python packages</span>"
+    ]
+  },
+  {
+    "objectID": "packaging.html#updating-the-package-version",
+    "href": "packaging.html#updating-the-package-version",
+    "title": "How to publish Python packages",
+    "section": "Updating the package version",
+    "text": "Updating the package version\nFortunately, this part is simple.\n\nUpdating the version on PyPI:\nRe-run steps 3-5 from the section Publishing on PyPI above, and upload the new .whl and .tar.gz files to PyPI with twine.\nUpdating the version on conda-forge:\nAfter the package becomes available on PyPI, conda-forge should automatically find the new version (this will take a few hours). After that, the conda-forge process will automatically issue a PR to the feedstock repo, which a recipe maintainer can approve in order to update the conda-forge version. After approval, the binary on the conda-forge cloud/repo will be automatically updated within 24 hours.",
+    "crumbs": [
+      "Python tools",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How to publish Python packages</span>"
+    ]
+  },
+  {
+    "objectID": "hpc_intro.html",
+    "href": "hpc_intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "HPC usage tutorial\nThis is a tutorial on HPC usage held in June 2021 by Aalto University, very useful. The videos are here.\nHPC user guide for UH. They have support sessions organized every day if you have any questions or need any help with HPC usage.\nSlack channel: Join and check out the #hpc channel on the lab Slack.",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "gp_and_bo.html",
+    "href": "gp_and_bo.html",
+    "title": "Resources for Gaussian processes and Bayesian optimization",
+    "section": "",
+    "text": "Gaussian Processes\n\nGortler et al. (2019). A Visual Exploration of Gaussian Processes. Distill\nVideos and tutorials from the Gaussian Process Summer School: GPSS 2021 Program\n\nStart with the first video, “Intro to GPs”, and the sessions on “Kernel Design” and “Representation Learning with GPs” (other videos can be explored later as time permits).\n\nTutorials/workshops (Jupyter notebooks): GPSS 2021 Labs\nThe GP Bible by Rasmussen and Williams (2006): Gaussian Processes for Machine Learning\n\n\n\nBayesian Optimization\n\nExploring Bayesian Optimization (Agnihotri and Batra 2020). Distill\nFrazier (2018). A Tutorial on Bayesian Optimization. arXiv\nVideo: “Introduction to Bayesian Optimization” from the Gaussian Process Summer School, Day 3: GPSS 2021 Day 3\nThe Bayesian Optimization Book by Garnett (2023): BayesOptBook\n\n\n\nSlack Channel\n\nJoin and check out the #gaussian-processes channel on the lab Slack.\n\n\n\n\n\nAgnihotri, Apoorv, and Nipun Batra. 2020. “Exploring Bayesian Optimization.” Distill. https://doi.org/10.23915/distill.00026.\n\n\nGarnett, Roman. 2023. Bayesian Optimization. Cambridge University Press.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Resources for Gaussian processes and Bayesian optimization</span>"
+    ]
+  },
+  {
+    "objectID": "seminars.html",
+    "href": "seminars.html",
+    "title": "Seminars",
+    "section": "",
+    "text": "Ongoing\nAalto Seminar on Advances in Probabilistic Machine Learning [APML]\nMachine Learning Coffee seminars\nSeminar on Gaussian Processes, Spatiotemporal Modeling, and Decision-making Systems",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Seminars</span>"
+    ]
+  },
+  {
+    "objectID": "contributing.html",
+    "href": "contributing.html",
+    "title": "Contributing guide",
+    "section": "",
+    "text": "Simply write a (q)markdown file like this one and add the filename (e.g., contributing.qmd) to _quarto.yml under the field book: chapters:. Then make a pull request to merge your changes to the main branch.\nFor other advanced usages, refer to Quarto documentation.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing guide</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Bibliography",
+    "section": "",
+    "text": "Agnihotri, Apoorv, and Nipun Batra. 2020. “Exploring Bayesian\nOptimization.” Distill. https://doi.org/10.23915/distill.00026.\n\n\nGarnett, Roman. 2023. Bayesian Optimization.\nCambridge University Press.",
+    "crumbs": [
+      "Bibliography"
+    ]
+  }
+]
