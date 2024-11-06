@@ -89,7 +89,7 @@
     "href": "contributing.html",
     "title": "Contributing guide",
     "section": "",
-    "text": "Simply write a (q)markdown file like this one and add the filename (e.g., contributing.qmd) to _quarto.yml under the field book: chapters:. Then make a pull request to merge your changes to the main branch.\nFor other advanced usages, refer to Quarto documentation.",
+    "text": "Simply write a (q)markdown file like this one and add the filename (e.g., contributing.qmd) to _quarto.yml under the field book: chapters:. Then make a pull request to merge your changes to the handbook’s repo.\nFor other advanced usages, refer to Quarto documentation.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing guide</span>"
     ]
