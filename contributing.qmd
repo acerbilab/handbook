@@ -7,7 +7,7 @@ author:
 
 # Contributing Guide
 
-Here are the detailed steps to ensure a smooth workflow. **It's simply editting the `.qmd` file and make pull requests on GitHub**. So don't be scared 😉.
+Here are the detailed steps to ensure a smooth workflow. **It's simply editting the `.qmd` file and making pull requests on GitHub**. So don't be scared 😉.
 
 ## Steps to Contribute
 
