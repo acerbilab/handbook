@@ -7,6 +7,6 @@ author:
 
 # Contributing guide
 
-Simply write a (q)markdown file like this one and add the filename (e.g., `contributing.qmd`) to `_quarto.yml` under the field `book: chapters:`. Then make a pull request to merge your changes to the [handbook's repo](https://github.com/acerbilab/handbook).
+Simply write a (q)markdown file like this one and add the filename (e.g., `contributing.qmd`) under the field `book: chapters:` in [_quarto.yml](https://github.com/acerbilab/handbook/blob/main/_quarto.yml) . Then make a pull request to merge your changes to the [handbook's repo](https://github.com/acerbilab/handbook).
 
 For other advanced usages, refer to [Quarto documentation](https://quarto.org/docs/books/).
