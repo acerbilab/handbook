@@ -118,15 +118,5 @@
       "Other info",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing guide</span>"
     ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "Bibliography",
-    "section": "",
-    "text": "Agnihotri, Apoorv, and Nipun Batra. 2020. “Exploring Bayesian\nOptimization.” Distill. https://doi.org/10.23915/distill.00026.\n\n\nGarnett, Roman. 2023. Bayesian Optimization.\nCambridge University Press.",
-    "crumbs": [
-      "Bibliography"
-    ]
   }
 ]
