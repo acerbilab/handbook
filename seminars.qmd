@@ -8,8 +8,8 @@ author:
 ---
 
 ## Ongoing
-- [Aalto Seminar on Advances in Probabilistic Machine Learning [APML]](https://aaltoml.github.io/apml/)
 - [Machine Learning Coffee seminars](https://fcai.fi/machine-learning-coffee-seminar)
+- [Aalto Seminar on Advances in Probabilistic Machine Learning [APML]](https://aaltoml.github.io/apml/)
 - [Seminar on Gaussian Processes, Spatiotemporal Modeling, and Decision-making Systems](https://gp-seminar-series.github.io/)
 
 ## Interesting Channels
