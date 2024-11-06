@@ -111,12 +111,34 @@
   {
     "objectID": "contributing.html",
     "href": "contributing.html",
-    "title": "Contributing guide",
+    "title": "Contributing Guide",
     "section": "",
-    "text": "Simply write a (q)markdown file like this one and add the filename (e.g., contributing.qmd) under the field book: chapters: in _quarto.yml . Then make a pull request to merge your changes to the handbook’s repo.\nFor other advanced usages, refer to Quarto documentation.",
+    "text": "Steps to Contribute",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing guide</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing Guide</span>"
+    ]
+  },
+  {
+    "objectID": "contributing.html#steps-to-contribute",
+    "href": "contributing.html#steps-to-contribute",
+    "title": "Contributing Guide",
+    "section": "",
+    "text": "Fork the Repository\nVisit the handbook repository and click on “Fork” to create a copy of the repository under your GitHub account.\nClone the Repository\nClone your fork to your local machine:\ngit clone https://github.com/YOUR_USERNAME/handbook.git\ncd handbook\nCreate a New Branch\nBefore making changes, create a new branch to keep your work organized:\ngit checkout -b your-branch-name\nAdd or Modify Content\n\nWrite or edit a (q)markdown file as needed.\nIf you’re adding a new chapter, create a new .qmd file, then include it under the book: chapters: field in _quarto.yml. For example:\n\n book:\n   chapters:\n     - index.qmd\n     - part: Python tools\n       - your-new-chapter.qmd\nPreview Locally\nTo see your changes before pushing, build and preview the book locally. You could use for example VSCode as the editor and Quarto has a VSCode plugin to help preview the book website locally, see instructions here.\nOr make sure you have Quarto installed, then run in bash terminal:\nquarto preview\nThis will open a live preview in your browser where you can verify your changes.\nCommit and Push Changes\nAfter making sure your changes look good, commit and push them to your fork:\ngit add .\ngit commit -m \"Brief description of your changes\"\ngit push origin your-branch-name\nMake a Pull Request\nGo to the original handbook repository and open a Pull Request from your branch. Provide a brief summary of your changes and mention any specific details reviewers should be aware of.",
+    "crumbs": [
+      "Other info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing Guide</span>"
+    ]
+  },
+  {
+    "objectID": "contributing.html#additional-resources",
+    "href": "contributing.html#additional-resources",
+    "title": "Contributing Guide",
+    "section": "Additional Resources",
+    "text": "Additional Resources\nFor more advanced features and customization options, please refer to the Quarto documentation.",
+    "crumbs": [
+      "Other info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {
