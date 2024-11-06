@@ -22,6 +22,7 @@ book:
     - part: Other info
       chapters:
         - contributing.qmd
+    - references.qmd
 
 number-depth: 1
 
