@@ -12,7 +12,7 @@ Check the status of submitted slurm jobs.
 squeue -u $USER --format="%.18i %.9P %.8j %.8u %.8T %.10M %.20S %.9l %.6D %R %.10m"
 ```
 
-You could set the default by writing the following lines in your `.bashrc` or `.bash_profile`:
+For convenience, you could set the default by writing the following lines in your `.bashrc` or `.bash_profile` and then simply call `squeue`.
 ```bash
 alias squeue='squeue -u $USER'
 export SQUEUE_FORMAT="%.18i %.9P %.8j %.8u %.8T %.10M %.20S %.9l %.6D %R %.10m"
