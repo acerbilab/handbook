@@ -69,7 +69,7 @@
     "href": "hpc_commands.html",
     "title": "Useful commands",
     "section": "",
-    "text": "Squeue\nCheck the status of submitted slurm jobs.\nYou could set the default by writing the following lines in your .bashrc or .bash_profile:\nSee the squeue manual for more options.",
+    "text": "Squeue\nCheck the status of submitted slurm jobs.\nFor convenience, you could set the default by writing the following lines in your .bashrc or .bash_profile and then simply call squeue.\nSee the squeue manual for more options.",
     "crumbs": [
       "HPC resources",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Useful commands</span>"
