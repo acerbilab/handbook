@@ -58,7 +58,29 @@
     "href": "hpc_intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "HPC usage tutorial\nThis is a tutorial on HPC usage held in June 2021 by Aalto University, very useful. The videos are here.\nHPC user guide for UH. They have support sessions organized every day if you have any questions or need any help with HPC usage.\nSlack channel: Join and check out the #hpc channel on the lab Slack.",
+    "text": "CSC\nThe CSC is in charge of Finland’s national computational resources. Many storage and computing programmes exist here, but the main ones for running ML experiments are Lumi, Mahti, and Puhti.\nLumi is separate from Mahti and Puhti and has a separate project approval process. It contains 2,978 nodes, each equipped with four AMD Instinct MI250X GPUs, totaling 11,912 GPUs, considered one of Europe’s largest supercomputers",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "hpc_intro.html#csc",
+    "href": "hpc_intro.html#csc",
+    "title": "Introduction",
+    "section": "",
+    "text": "Mahti and Puhti are considered the same project resource. When you get approved for a project, you can use either to run. The Mahti partition contains 24 GPU nodes, each equipped with four NVIDIA A100 GPUs. The Puhti partition includes 80 GPU nodes, each featuring four NVIDIA Volta V100 GPUs.",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "hpc_intro.html#hpc-tutorials",
+    "href": "hpc_intro.html#hpc-tutorials",
+    "title": "Introduction",
+    "section": "HPC tutorials",
+    "text": "HPC tutorials\nThis is a tutorial on HPC usage held in June 2021 by Aalto University, very useful. The videos are here.\nHPC user guide for UH. They have support sessions organized every day if you have any questions or need any help with HPC usage.\nSlack channel: Join and check out the #hpc channel on the lab Slack.",
     "crumbs": [
       "HPC resources",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
