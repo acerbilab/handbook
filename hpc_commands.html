@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Chengkun Li">
-<meta name="dcterms.date" content="2024-11-06">
+<meta name="dcterms.date" content="2024-11-12">
 
-<title>Contributing Guide – Lab Handbook</title>
+<title>Useful commands – Lab Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./seminars.html" rel="prev">
+<link href="./gp_and_bo.html" rel="next">
+<link href="./hpc_intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contributing.html">Other info</a></li><li class="breadcrumb-item"><a href="./contributing.html"><span class="chapter-title">Contributing Guide</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hpc_intro.html">HPC resources</a></li><li class="breadcrumb-item"><a href="./hpc_commands.html"><span class="chapter-title">Useful commands</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hpc_commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Useful commands</span></a>
+  <a href="./hpc_commands.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Useful commands</span></a>
   </div>
 </li>
       </ul>
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Contributing Guide</span></a>
+  <a href="./contributing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Contributing Guide</span></a>
   </div>
 </li>
       </ul>
@@ -241,17 +241,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#steps-to-contribute" id="toc-steps-to-contribute" class="nav-link active" data-scroll-target="#steps-to-contribute">Steps to Contribute</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#squeue" id="toc-squeue" class="nav-link active" data-scroll-target="#squeue">Squeue</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/contributing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/hpc_commands.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contributing.html">Other info</a></li><li class="breadcrumb-item"><a href="./contributing.html"><span class="chapter-title">Contributing Guide</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hpc_intro.html">HPC resources</a></li><li class="breadcrumb-item"><a href="./hpc_commands.html"><span class="chapter-title">Useful commands</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Contributing Guide</span></h1>
+<h1 class="title"><span class="chapter-title">Useful commands</span></h1>
 </div>
 
 
@@ -268,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 6, 2024</p>
+      <p class="date">November 12, 2024</p>
     </div>
   </div>
   
@@ -286,46 +285,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Here are the detailed steps to ensure a smooth workflow. <strong>It’s simply editting the <code>.qmd</code> file and making pull requests on GitHub</strong>. So don’t be scared 😉.</p>
-<section id="steps-to-contribute" class="level2">
-<h2 class="anchored" data-anchor-id="steps-to-contribute">Steps to Contribute</h2>
-<ol type="1">
-<li><p><strong>Fork the Repository</strong><br>
-Visit the <a href="https://github.com/acerbilab/handbook">handbook repository</a> and click on “Fork” to create a copy of the repository under your GitHub account.</p></li>
-<li><p><strong>Clone the Repository</strong><br>
-Clone your fork to your local machine:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/YOUR_USERNAME/handbook.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> handbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Create a New Branch</strong><br>
-Before making changes, create a new branch to keep your work organized:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> your-branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Add or Modify Content</strong></p>
-<ul>
-<li>Write or edit a <code>(q)markdown</code> file as needed.</li>
-<li>If you’re adding a new chapter, create a new <code>.qmd</code> file, then include it under the <code>book: chapters:</code> field in <a href="https://github.com/acerbilab/handbook/blob/main/_quarto.yml">_quarto.yml</a>. For example:</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">book</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">chapters</span><span class="kw">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> index.qmd</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> </span><span class="fu">part</span><span class="kw">:</span><span class="at"> Python tools</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="kw">-</span><span class="at"> your-new-chapter.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Preview Locally</strong></p>
-<p>To see your changes before pushing, build and preview the book locally. You could use for example VSCode as the editor and Quarto has a VSCode plugin to help preview the book website locally, see instructions <a href="https://quarto.org/docs/tools/vscode.html">here</a>.</p>
-<p>Or make sure you have Quarto installed, then run in bash terminal:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will open a live preview in your browser where you can verify your changes.</p></li>
-<li><p><strong>Commit and Push Changes</strong><br>
-After making sure your changes look good, commit and push them to your fork:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Brief description of your changes"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin your-branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Make a Pull Request</strong><br>
-Go to the original <a href="https://github.com/acerbilab/handbook">handbook repository</a> and open a Pull Request from your branch. Provide a brief summary of your changes and mention any specific details reviewers should be aware of.</p></li>
-</ol>
-</section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p>For more advanced features and customization options, please refer to the <a href="https://quarto.org/docs/books/">Quarto documentation</a>.</p>
+<section id="squeue" class="level2">
+<h2 class="anchored" data-anchor-id="squeue">Squeue</h2>
+<p>Check the status of submitted slurm jobs.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USER</span> <span class="at">--format</span><span class="op">=</span><span class="st">"%.18i %.9P %.8j %.8u %.8T %.10M %.20S %.9l %.6D %R %.10m"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You could set the default by writing the following lines in your <code>.bashrc</code> or <code>.bash_profile</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> squeue=<span class="st">'squeue -u $USER'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SQUEUE_FORMAT</span><span class="op">=</span><span class="st">"%.18i %.9P %.8j %.8u %.8T %.10M %.20S %.9l %.6D %R %.10m"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>See the <a href="https://slurm.schedmd.com/squeue.html#OPT_format">squeue manual</a> for more options.</p>
 
 
 </section>
@@ -753,13 +720,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./seminars.html" class="pagination-link" aria-label="Seminars">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Seminars</span></span>
+      <a href="./hpc_intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Bibliography">
-        <span class="nav-page-text">Bibliography</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./gp_and_bo.html" class="pagination-link" aria-label="Resources for Gaussian processes and Bayesian optimization">
+        <span class="nav-page-text"><span class="chapter-title">Resources for Gaussian processes and Bayesian optimization</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -768,4 +735,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/contributing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/hpc_commands.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

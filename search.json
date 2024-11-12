@@ -65,6 +65,28 @@
     ]
   },
   {
+    "objectID": "hpc_commands.html",
+    "href": "hpc_commands.html",
+    "title": "Useful commands",
+    "section": "",
+    "text": "Squeue\nCheck the status of submitted slurm jobs.\nYou could set the default by writing the following lines in your .bashrc or .bash_profile:\nSee the squeue manual for more options.",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Useful commands</span>"
+    ]
+  },
+  {
+    "objectID": "hpc_commands.html#squeue",
+    "href": "hpc_commands.html#squeue",
+    "title": "Useful commands",
+    "section": "",
+    "text": "squeue -u $USER --format=\"%.18i %.9P %.8j %.8u %.8T %.10M %.20S %.9l %.6D %R %.10m\"\n\nalias squeue='squeue -u $USER'\nexport SQUEUE_FORMAT=\"%.18i %.9P %.8j %.8u %.8T %.10M %.20S %.9l %.6D %R %.10m\"",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Useful commands</span>"
+    ]
+  },
+  {
     "objectID": "gp_and_bo.html",
     "href": "gp_and_bo.html",
     "title": "Resources for Gaussian processes and Bayesian optimization",
@@ -72,7 +94,7 @@
     "text": "Gaussian Processes\n\nGortler et al. (2019). A Visual Exploration of Gaussian Processes. Distill\nVideos and tutorials from the Gaussian Process Summer School: GPSS 2021 Program\n\nStart with the first video, “Intro to GPs”, and the sessions on “Kernel Design” and “Representation Learning with GPs” (other videos can be explored later as time permits).\n\nTutorials/workshops (Jupyter notebooks): GPSS 2021 Labs\nThe GP Bible by Rasmussen and Williams (2006): Gaussian Processes for Machine Learning\n\n\n\nBayesian Optimization\n\nExploring Bayesian Optimization (Agnihotri and Batra 2020). Distill\nFrazier (2018). A Tutorial on Bayesian Optimization. arXiv\nVideo: “Introduction to Bayesian Optimization” from the Gaussian Process Summer School, Day 3: GPSS 2021 Day 3\nThe Bayesian Optimization Book by Garnett (2023): BayesOptBook\n\n\n\nSlack Channel\n\nJoin and check out the #gaussian-processes channel on the lab Slack.\n\n\n\n\n\nAgnihotri, Apoorv, and Nipun Batra. 2020. “Exploring Bayesian Optimization.” Distill. https://doi.org/10.23915/distill.00026.\n\n\nGarnett, Roman. 2023. Bayesian Optimization. Cambridge University Press.\n\n\nRasmussen, Carl Edward, and Christopher KI Williams. 2006. Gaussian Processes for Machine Learning. Vol. 2. 3. MIT press Cambridge, MA.",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Resources for Gaussian processes and Bayesian optimization</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Resources for Gaussian processes and Bayesian optimization</span>"
     ]
   },
   {
@@ -83,7 +105,7 @@
     "text": "Ongoing",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Seminars</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Seminars</span>"
     ]
   },
   {
@@ -94,7 +116,7 @@
     "text": "Machine Learning Coffee seminars\nAalto Seminar on Advances in Probabilistic Machine Learning [APML]\nSeminar on Gaussian Processes, Spatiotemporal Modeling, and Decision-making Systems",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Seminars</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Seminars</span>"
     ]
   },
   {
@@ -105,7 +127,7 @@
     "text": "Interesting Channels\n\nSecondmind Labs Research seminars",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Seminars</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Seminars</span>"
     ]
   },
   {
@@ -116,7 +138,7 @@
     "text": "Steps to Contribute",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {
@@ -127,7 +149,7 @@
     "text": "Fork the Repository\nVisit the handbook repository and click on “Fork” to create a copy of the repository under your GitHub account.\nClone the Repository\nClone your fork to your local machine:\ngit clone https://github.com/YOUR_USERNAME/handbook.git\ncd handbook\nCreate a New Branch\nBefore making changes, create a new branch to keep your work organized:\ngit checkout -b your-branch-name\nAdd or Modify Content\n\nWrite or edit a (q)markdown file as needed.\nIf you’re adding a new chapter, create a new .qmd file, then include it under the book: chapters: field in _quarto.yml. For example:\n\n book:\n   chapters:\n     - index.qmd\n     - part: Python tools\n       - your-new-chapter.qmd\nPreview Locally\nTo see your changes before pushing, build and preview the book locally. You could use for example VSCode as the editor and Quarto has a VSCode plugin to help preview the book website locally, see instructions here.\nOr make sure you have Quarto installed, then run in bash terminal:\nquarto preview\nThis will open a live preview in your browser where you can verify your changes.\nCommit and Push Changes\nAfter making sure your changes look good, commit and push them to your fork:\ngit add .\ngit commit -m \"Brief description of your changes\"\ngit push origin your-branch-name\nMake a Pull Request\nGo to the original handbook repository and open a Pull Request from your branch. Provide a brief summary of your changes and mention any specific details reviewers should be aware of.",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {
@@ -138,7 +160,7 @@
     "text": "Additional Resources\nFor more advanced features and customization options, please refer to the Quarto documentation.",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {
