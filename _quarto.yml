@@ -15,6 +15,7 @@ book:
     - part: HPC resources
       chapters:
         - hpc_intro.qmd
+        - hpc_commands.qmd
     - part: Research topics
       chapters:
         - gp_and_bo.qmd
