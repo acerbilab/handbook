@@ -153,6 +153,61 @@
     ]
   },
   {
+    "objectID": "mlcs_guide.html",
+    "href": "mlcs_guide.html",
+    "title": "Machine Learning Coffee Seminar organizing guide",
+    "section": "",
+    "text": "Prerequisites\nTo organize the ML seminar, ensure you have the following access and resources:\nBefore beginning your tasks, complete these access requests:",
+    "crumbs": [
+      "Research topics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+    ]
+  },
+  {
+    "objectID": "mlcs_guide.html#prerequisites",
+    "href": "mlcs_guide.html#prerequisites",
+    "title": "Machine Learning Coffee Seminar organizing guide",
+    "section": "",
+    "text": "University of Helsinki user account\nKey to Computer Science Department to access room A318\n\n\n\nFCAI Squarespace and YouTube channel access: Contact Kaisa Pekkala (kaisa.pekkala@aalto.fi).\nFCAI speakers and participants documents: Request access from Luigi.\nZoom Meeting Ownership: Request ownership transfer from the previous organizer.\n\n\nZoom Meeting Ownership Transfer\n\nSign in to Zoom with your University of Helsinki account.\nGo to Settings → Meetings.\nScroll to the bottom and select Schedule Privilege → Edit and Add.\nEnter the previous owner’s university email and select their name.\nAsk the previous owner to transfer room ownership to you:\n\nThey should go to Zoom, locate MLCS Kumpula under Meetings, choose Edit and Schedule For, select your name, and save.\nMore information on Zoom ownership transfer.",
+    "crumbs": [
+      "Research topics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+    ]
+  },
+  {
+    "objectID": "mlcs_guide.html#tasks",
+    "href": "mlcs_guide.html#tasks",
+    "title": "Machine Learning Coffee Seminar organizing guide",
+    "section": "Tasks",
+    "text": "Tasks\n\nPre-Seminar Tasks\n\nCreate Event on Squarespace:\n\nDuplicate an existing event if preferred, but update Options → Event URL to reflect the new event.\n\nSend Advertising Email:\n\nConfirm with the ML seminar team (mlseminar@hiit.fi) that the announcement has been sent.\n\nReserve Microphone:\n\nReserve a Blackstorm Scout USB microphone from IT support (helpdesk@helsinki.fi).\n\nPrint Attendance List",
+    "crumbs": [
+      "Research topics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+    ]
+  },
+  {
+    "objectID": "mlcs_guide.html#seminar-day-checklist",
+    "href": "mlcs_guide.html#seminar-day-checklist",
+    "title": "Machine Learning Coffee Seminar organizing guide",
+    "section": "Seminar Day Checklist",
+    "text": "Seminar Day Checklist\n\nEquipment Setup\n\nGet Equipment:\n\nPick up the Blackstorm Scout microphone (USB) from IT support (the microphone is stored in room A216, has black and purple box).\nRetrieve the Owl camera from meeting room A318 (stored in a white box on the side table by the door).\n\nClassroom Setup: Setting up the classroom for the hybrid seminar (in-person and Zoom attendees) can be tricky so ensure to test in advance for the first time. There are two main setups to consider:\n\nUsing your own laptop without the classroom computer:\n\nConnect the microphone and Owl camera to your laptop. You could test in advance to ensure they work with your laptop.\nPosition the Owl camera on the table in front of the podium.\nStart the Zoom meeting from your laptop\nLet the speaker join the Zoom meeting from their laptop, muting the speaker’s laptop microphone and turning off the camera. The speaker should use the microphone connected to your laptop.\nConnect the speaker’s laptop to the projector and share their screen.\nIf the projector doesn’t work with the speaker’s laptop, you can connect your laptop for sharing the speaker’s screen, which is less ideal since it will have some Zoom toolbar visible on the screen.\nStart recording in Zoom.\n\nUsing the classsroom computer:\n\nConnect the microphone and Owl camera to the classroom computer. Some classroom computers might not work well, so you might need to use your laptop instead. See the previous setup for details.\nStart the projector.\nStart the Zoom meeting from your laptop.\nLet the speaker join the Zoom meeting from their laptop.\nLog into Zoom from the classroom computer (you’ll need the university account for login) and share the meeting to the projector screen.\nStart recording in Zoom\n\n\n\n\n\nZoom Meeting Management\n\nRecord the session on your laptop.\nMonitor Zoom chat and read questions aloud if needed.\nNote the number of Zoom attendees.\n\n\n\nAttendance Tracking\n\nCirculate the attendance list and a pen once the talk begins.\nMake a note of the Zoom attendance count.",
+    "crumbs": [
+      "Research topics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+    ]
+  },
+  {
+    "objectID": "mlcs_guide.html#post-seminar-tasks",
+    "href": "mlcs_guide.html#post-seminar-tasks",
+    "title": "Machine Learning Coffee Seminar organizing guide",
+    "section": "Post-Seminar Tasks",
+    "text": "Post-Seminar Tasks\n\nReturn Equipment:\n\nReturn the microphone and Owl camera to their respective storage locations.\n\nHandle Leftover Food:\n\nMove any leftover food to the coffee room on the second floor of the CS department.\n\nRecord Attendance:\n\nUpdate the attendance in the FCAI participants document.\n\nEdit and Upload Video:\n\nUse QuickTime or a similar tool for video editing.\nUpload the edited video to YouTube.\n\n\n\nYouTube Upload Instructions\n\nTitle: Use the title from the event information.\nDescription: Include the abstract and speaker details from the event information.\nPlaylist: Add the video to the Machine Learning Coffee Seminar playlist.\nAudience: Set the audience to not made for kids.",
+    "crumbs": [
+      "Research topics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+    ]
+  },
+  {
     "objectID": "contributing.html",
     "href": "contributing.html",
     "title": "Contributing Guide",
@@ -160,7 +215,7 @@
     "text": "Steps to Contribute",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {
@@ -171,7 +226,7 @@
     "text": "Fork the Repository\nVisit the handbook repository and click on “Fork” to create a copy of the repository under your GitHub account.\nClone the Repository\nClone your fork to your local machine:\ngit clone https://github.com/YOUR_USERNAME/handbook.git\ncd handbook\nCreate a New Branch\nBefore making changes, create a new branch to keep your work organized:\ngit checkout -b your-branch-name\nAdd or Modify Content\n\nWrite or edit a (q)markdown file as needed.\nIf you’re adding a new chapter, create a new .qmd file, then include it under the book: chapters: field in _quarto.yml. For example:\n\n book:\n   chapters:\n     - index.qmd\n     - part: Python tools\n       - your-new-chapter.qmd\nPreview Locally\nTo see your changes before pushing, build and preview the book locally. You could use for example VSCode as the editor and Quarto has a VSCode plugin to help preview the book website locally, see instructions here.\nOr make sure you have Quarto installed, then run in bash terminal:\nquarto preview\nThis will open a live preview in your browser where you can verify your changes.\nCommit and Push Changes\nAfter making sure your changes look good, commit and push them to your fork:\ngit add .\ngit commit -m \"Brief description of your changes\"\ngit push origin your-branch-name\nMake a Pull Request\nGo to the original handbook repository and open a Pull Request from your branch. Provide a brief summary of your changes and mention any specific details reviewers should be aware of.",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {
@@ -182,7 +237,7 @@
     "text": "Additional Resources\nFor more advanced features and customization options, please refer to the Quarto documentation.",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {

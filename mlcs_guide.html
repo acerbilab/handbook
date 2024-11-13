@@ -6,10 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Machine and Human Intelligence group, University of Helsinki">
+<meta name="author" content="Ulpu Remes">
+<meta name="author" content="Chengkun Li">
+<meta name="author" content="Petrus Mikkola">
 <meta name="dcterms.date" content="2024-11-13">
 
-<title>Lab Handbook</title>
+<title>Machine Learning Coffee Seminar organizing guide – Lab Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +34,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./packaging.html" rel="next">
+<link href="./contributing.html" rel="next">
+<link href="./seminars.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./gp_and_bo.html">Research topics</a></li><li class="breadcrumb-item"><a href="./mlcs_guide.html"><span class="chapter-title">Machine Learning Coffee Seminar organizing guide</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -174,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mlcs_guide.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Machine Learning Coffee Seminar organizing guide</span></a>
+  <a href="./mlcs_guide.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Machine Learning Coffee Seminar organizing guide</span></a>
   </div>
 </li>
       </ul>
@@ -211,16 +214,33 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites">Prerequisites</a>
+  <ul class="collapse">
+  <li><a href="#zoom-meeting-ownership-transfer" id="toc-zoom-meeting-ownership-transfer" class="nav-link" data-scroll-target="#zoom-meeting-ownership-transfer">Zoom Meeting Ownership Transfer</a></li>
+  </ul></li>
+  <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
+  <ul class="collapse">
+  <li><a href="#pre-seminar-tasks" id="toc-pre-seminar-tasks" class="nav-link" data-scroll-target="#pre-seminar-tasks">Pre-Seminar Tasks</a></li>
+  </ul></li>
+  <li><a href="#seminar-day-checklist" id="toc-seminar-day-checklist" class="nav-link" data-scroll-target="#seminar-day-checklist">Seminar Day Checklist</a>
+  <ul class="collapse">
+  <li><a href="#equipment-setup" id="toc-equipment-setup" class="nav-link" data-scroll-target="#equipment-setup">Equipment Setup</a></li>
+  <li><a href="#zoom-meeting-management" id="toc-zoom-meeting-management" class="nav-link" data-scroll-target="#zoom-meeting-management">Zoom Meeting Management</a></li>
+  <li><a href="#attendance-tracking" id="toc-attendance-tracking" class="nav-link" data-scroll-target="#attendance-tracking">Attendance Tracking</a></li>
+  </ul></li>
+  <li><a href="#post-seminar-tasks" id="toc-post-seminar-tasks" class="nav-link" data-scroll-target="#post-seminar-tasks">Post-Seminar Tasks</a>
+  <ul class="collapse">
+  <li><a href="#youtube-upload-instructions" id="toc-youtube-upload-instructions" class="nav-link" data-scroll-target="#youtube-upload-instructions">YouTube Upload Instructions</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/mlcs_guide.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./gp_and_bo.html">Research topics</a></li><li class="breadcrumb-item"><a href="./mlcs_guide.html"><span class="chapter-title">Machine Learning Coffee Seminar organizing guide</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lab Handbook</h1>
+<h1 class="title"><span class="chapter-title">Machine Learning Coffee Seminar organizing guide</span></h1>
 </div>
 
 
@@ -228,9 +248,11 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Machine and Human Intelligence group, University of Helsinki </p>
+             <p>Ulpu Remes </p>
+             <p>Chengkun Li </p>
+             <p>Petrus Mikkola </p>
           </div>
   </div>
     
@@ -241,6 +263,12 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 13, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -249,11 +277,140 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<p>Lab handbook of the <a href="https://www.helsinki.fi/en/researchgroups/machine-and-human-intelligence">Machine and Human Intelligence group</a> at the University of Helsinki.</p>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p>To organize the ML seminar, ensure you have the following access and resources:</p>
+<ul>
+<li><strong>University of Helsinki user account</strong></li>
+<li><strong>Key to Computer Science Department</strong> to access room A318</li>
+</ul>
+<p>Before beginning your tasks, complete these access requests:</p>
+<ol type="1">
+<li><strong>FCAI Squarespace and YouTube channel access</strong>: Contact Kaisa Pekkala (kaisa.pekkala@aalto.fi).</li>
+<li><strong>FCAI speakers and participants documents</strong>: Request access from Luigi.</li>
+<li><strong>Zoom Meeting Ownership</strong>: Request ownership transfer from the previous organizer.</li>
+</ol>
+<section id="zoom-meeting-ownership-transfer" class="level3">
+<h3 class="anchored" data-anchor-id="zoom-meeting-ownership-transfer">Zoom Meeting Ownership Transfer</h3>
+<ol type="1">
+<li>Sign in to Zoom with your University of Helsinki account.</li>
+<li>Go to <strong>Settings → Meetings</strong>.</li>
+<li>Scroll to the bottom and select <strong>Schedule Privilege</strong> → <strong>Edit and Add</strong>.</li>
+<li>Enter the previous owner’s university email and select their name.</li>
+<li>Ask the previous owner to transfer room ownership to you:
+<ul>
+<li>They should go to Zoom, locate <strong>MLCS Kumpula</strong> under <strong>Meetings</strong>, choose <strong>Edit and Schedule For</strong>, select your name, and save.</li>
+<li><a href="https://agsci.psu.edu/it/how-to/pass-ownership-of-a-zoom-meeting-or-webinar-to-another-person">More information on Zoom ownership transfer</a>.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="tasks" class="level2">
+<h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
+<section id="pre-seminar-tasks" class="level3">
+<h3 class="anchored" data-anchor-id="pre-seminar-tasks">Pre-Seminar Tasks</h3>
+<ol type="1">
+<li><strong>Create Event on Squarespace</strong>:
+<ul>
+<li>Duplicate an existing event if preferred, but update <strong>Options → Event URL</strong> to reflect the new event.</li>
+</ul></li>
+<li><strong>Send Advertising Email</strong>:
+<ul>
+<li>Confirm with the ML seminar team (mlseminar@hiit.fi) that the announcement has been sent.</li>
+</ul></li>
+<li><strong>Reserve Microphone</strong>:
+<ul>
+<li>Reserve a <strong>Blackstorm Scout USB microphone</strong> from IT support (helpdesk@helsinki.fi).</li>
+</ul></li>
+<li><strong>Print Attendance List</strong></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="seminar-day-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="seminar-day-checklist">Seminar Day Checklist</h2>
+<section id="equipment-setup" class="level3">
+<h3 class="anchored" data-anchor-id="equipment-setup">Equipment Setup</h3>
+<ol type="1">
+<li><p><strong>Get Equipment</strong>:</p>
+<ul>
+<li>Pick up the <strong>Blackstorm Scout microphone</strong> (USB) from IT support (the microphone is stored in room A216, has black and purple box).</li>
+<li>Retrieve the <strong>Owl camera</strong> from meeting room A318 (stored in a white box on the side table by the door).</li>
+</ul></li>
+<li><p><strong>Classroom Setup</strong>: Setting up the classroom for the hybrid seminar (in-person and Zoom attendees) can be tricky so ensure to test in advance for the first time. There are two main setups to consider:</p>
+<ul>
+<li><strong>Using your own laptop without the classroom computer</strong>:
+<ul>
+<li>Connect the microphone and Owl camera to your laptop. You could test in advance to ensure they work with your laptop.</li>
+<li>Position the Owl camera on the table in front of the podium.</li>
+<li>Start the Zoom meeting from your laptop</li>
+<li>Let the speaker join the Zoom meeting from their laptop, muting the speaker’s laptop microphone and turning off the camera. The speaker should use the microphone connected to your laptop.</li>
+<li>Connect the speaker’s laptop to the projector and share their screen.</li>
+<li>If the projector doesn’t work with the speaker’s laptop, you can connect your laptop for sharing the speaker’s screen, which is less ideal since it will have some Zoom toolbar visible on the screen.</li>
+<li><strong>Start recording</strong> in Zoom.</li>
+</ul></li>
+<li><strong>Using the classsroom computer</strong>:
+<ul>
+<li>Connect the microphone and Owl camera to the classroom computer. Some classroom computers might not work well, so you might need to use your laptop instead. See the previous setup for details.</li>
+<li>Start the projector.</li>
+<li>Start the Zoom meeting from your laptop.</li>
+<li>Let the speaker join the Zoom meeting from their laptop.</li>
+<li>Log into Zoom from the classroom computer (you’ll need the university account for login) and share the meeting to the projector screen.</li>
+<li><strong>Start recording</strong> in Zoom</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+<section id="zoom-meeting-management" class="level3">
+<h3 class="anchored" data-anchor-id="zoom-meeting-management">Zoom Meeting Management</h3>
+<ol type="1">
+<li>Record the session on your laptop.</li>
+<li>Monitor Zoom chat and read questions aloud if needed.</li>
+<li>Note the number of Zoom attendees.</li>
+</ol>
+</section>
+<section id="attendance-tracking" class="level3">
+<h3 class="anchored" data-anchor-id="attendance-tracking">Attendance Tracking</h3>
+<ul>
+<li>Circulate the attendance list and a pen once the talk begins.</li>
+<li>Make a note of the Zoom attendance count.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="post-seminar-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="post-seminar-tasks">Post-Seminar Tasks</h2>
+<ol type="1">
+<li><strong>Return Equipment</strong>:
+<ul>
+<li>Return the microphone and Owl camera to their respective storage locations.</li>
+</ul></li>
+<li><strong>Handle Leftover Food</strong>:
+<ul>
+<li>Move any leftover food to the coffee room on the second floor of the CS department.</li>
+</ul></li>
+<li><strong>Record Attendance</strong>:
+<ul>
+<li>Update the attendance in the FCAI participants document.</li>
+</ul></li>
+<li><strong>Edit and Upload Video</strong>:
+<ul>
+<li>Use QuickTime or a similar tool for video editing.</li>
+<li>Upload the edited video to YouTube.</li>
+</ul></li>
+</ol>
+<section id="youtube-upload-instructions" class="level3">
+<h3 class="anchored" data-anchor-id="youtube-upload-instructions">YouTube Upload Instructions</h3>
+<ol type="1">
+<li><strong>Title</strong>: Use the title from the event information.</li>
+<li><strong>Description</strong>: Include the abstract and speaker details from the event information.</li>
+<li><strong>Playlist</strong>: Add the video to the <strong>Machine Learning Coffee Seminar</strong> playlist.</li>
+<li><strong>Audience</strong>: Set the audience to <strong>not made for kids</strong>.</li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -679,10 +836,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./seminars.html" class="pagination-link" aria-label="Seminars">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Seminars</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./packaging.html" class="pagination-link" aria-label="How to publish Python packages">
-        <span class="nav-page-text"><span class="chapter-title">How to publish Python packages</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./contributing.html" class="pagination-link" aria-label="Contributing Guide">
+        <span class="nav-page-text"><span class="chapter-title">Contributing Guide</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -691,4 +851,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/mlcs_guide.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
