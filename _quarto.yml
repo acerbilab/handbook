@@ -20,6 +20,7 @@ book:
       chapters:
         - gp_and_bo.qmd
         - seminars.qmd
+        - mlcs_guide.qmd
     - part: Other info
       chapters:
         - contributing.qmd
