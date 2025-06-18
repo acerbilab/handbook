@@ -1,5 +1,5 @@
 ---
-date: "2025-18-06"
+date: "2025-06-18"
 date-modified: last-modified
 author:
   - name: Nasrulloh Loka
