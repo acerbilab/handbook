@@ -19,7 +19,7 @@ In most cases, LUMI is the preferred choice for training large-scale models, des
 
 ## Scope
 
-This workflow focuses on using **LUMI**. However, the setup steps described here can be easily adapted to other HPC systems. Typically, only a few settings—such as the partition name, account name, and GPU or CPU resource specifications—need to be modified when switching clusters. About 80% of the workflow remains the same, assuming the system uses [SLURM](https://slurm.schedmd.com/quickstart.html) as its scheduler.
+This workflow focuses on using **LUMI**. However, the steps described here can be easily adapted to other HPC systems. Typically, only a few settings—such as the partition name, account name, and GPU or CPU resource specifications—need to be modified when switching clusters. About 80% of the workflow remains the same, assuming the system uses [SLURM](https://slurm.schedmd.com/quickstart.html) as its scheduler.
 
 ---
 
@@ -95,7 +95,7 @@ Explanation of flags:
 - `--time=00:30:00`: time limit in HH:MM:SS
     
 
-After allocation, you’ll get an interactive shell on the compute node. For more details, see LUMI's [Interactive Jobs Guide](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/).
+After allocation, you’ll get an interactive shell on the compute node. Note that the required flags and their formats might differ across HPC systems. For more details, see LUMI's [Interactive Jobs Guide](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/).
 
 ### Batch Job
 
@@ -169,7 +169,7 @@ seff <jobID>
 
 If your job is underutilizing requested resources, adjust future jobs accordingly to save compute credits.
 
-You can also run slurm history to view a list of your past jobs, including their IDs, states, and runtimes. This can be useful for tracking completed jobs or troubleshooting issues.
+You can also run `slurm history` to view a list of your past jobs, including their IDs, states, and runtimes. This can be useful for tracking completed jobs or troubleshooting issues.
 
 ### Inspecting Logs
 
