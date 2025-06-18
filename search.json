@@ -14,7 +14,7 @@
     "href": "packaging.html",
     "title": "How to publish Python packages",
     "section": "",
-    "text": "Publishing on PyPI\nPublishing a package on PyPI is generally simpler than publish on conda-forge, and it’s easiest to use the PyPI package as the source for a conda-forge recipe anyway, so it’s best to start here. More details can be found here.\nSee here for some details about semantic versioning.\n4. Install Python build tools. It’s probably a good idea to create a new environment for the whole build and packaging process.\n(from the project directory)\n6. This should create a directory dist/ with .whl and .tar.gz files matching your package name and tagged version. Inspect these files and make sure that they contain the contents you expect. By default this should be the source directory corresponding to your project’s name, e.g. /pyvbmc. If you are missing files that should be there, then see the link above (https://setuptools.pypa.io/en/latest/userguide/datafiles.html) regarding package-data and MANIFEST.in.\n7. You can also run twine check dist/* to ensure that the package name and description will render properly on PyPI.\n8. If everything looks correct, test out the build by creating a new environment and running pip install dist/*.whl to install the packaged version and test it out. For example, you could run the tests with pytest --pyargs your-package (do this from somewhere outside the project directory, to ensure that pytest is finding the version you just installed, and not the local tests). You could also open a Python REPL and just ensure that your package imports. You may need to open a new shell before the installation can be found on your path.\nThe --extra-index-urltells pip to also look at the regular PyPI repository, which is important if your package has dependencies which are not on the test repo (this is likely the case).\n10. If everything looks good on the test repository, you can run twine upload dist/* to upload to the official repository (you will need an account there as well, separate from your test account). Be aware that while a version of a package can be deleted from PyPI (so that it is no longer available), that same version number can never be re-uploaded. So it pays to double-check.\n11. Once uploaded, you should be able to run pip install your-package!",
+    "text": "Publishing on PyPI\nWe decsribe here the steps and tips for publishing Python packages on PyPI and conda-forge.\nPublishing a package on PyPI is generally simpler than publish on conda-forge, and it’s easiest to use the PyPI package as the source for a conda-forge recipe anyway, so it’s best to start here. More details can be found here.\nSee here for some details about semantic versioning.\n4. Install Python build tools. It’s probably a good idea to create a new environment for the whole build and packaging process.\n(from the project directory)\n6. This should create a directory dist/ with .whl and .tar.gz files matching your package name and tagged version. Inspect these files and make sure that they contain the contents you expect. By default this should be the source directory corresponding to your project’s name, e.g. /pyvbmc. If you are missing files that should be there, then see the link above (https://setuptools.pypa.io/en/latest/userguide/datafiles.html) regarding package-data and MANIFEST.in.\n7. You can also run twine check dist/* to ensure that the package name and description will render properly on PyPI.\n8. If everything looks correct, test out the build by creating a new environment and running pip install dist/*.whl to install the packaged version and test it out. For example, you could run the tests with pytest --pyargs your-package (do this from somewhere outside the project directory, to ensure that pytest is finding the version you just installed, and not the local tests). You could also open a Python REPL and just ensure that your package imports. You may need to open a new shell before the installation can be found on your path.\nThe --extra-index-urltells pip to also look at the regular PyPI repository, which is important if your package has dependencies which are not on the test repo (this is likely the case).\n10. If everything looks good on the test repository, you can run twine upload dist/* to upload to the official repository (you will need an account there as well, separate from your test account). Be aware that while a version of a package can be deleted from PyPI (so that it is no longer available), that same version number can never be re-uploaded. So it pays to double-check.\n11. Once uploaded, you should be able to run pip install your-package!",
     "crumbs": [
       "Python tools",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>How to publish Python packages</span>"
@@ -58,7 +58,7 @@
     "href": "hpc_intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "CSC\nThe CSC is in charge of Finland’s national computational resources. Many storage and computing programmes exist here, but the main ones for running ML experiments are Lumi, Mahti, and Puhti.",
+    "text": "CSC\nWhenever doing research, High Performance Computing (HPC) access and usage is fundamental, you will rarely be running things only on a local machine. The main HPC resources we can use are CSC and UH’s Turso.\nThe CSC is in charge of Finland’s national computational resources. Many storage and computing programmes exist here, but the main ones for running ML experiments are Lumi, Mahti, and Puhti.",
     "crumbs": [
       "HPC resources",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
@@ -109,6 +109,61 @@
     ]
   },
   {
+    "objectID": "hpc_workflows.html",
+    "href": "hpc_workflows.html",
+    "title": "HPC Workflow",
+    "section": "",
+    "text": "Scope\nThis guide explains how to use High-Performance Computing (HPC) resources available at the University of Helsinki (UH). Currently, we have access to several HPC systems:\nIn most cases, LUMI is the preferred choice for training large-scale models, despite its AMD GPU architecture. Puhti and Mahti are scheduled to be replaced by Rouhu in 2026. Rouhu has not yet been launched at the time of writing this guide.\nThis workflow focuses on using LUMI. However, the setup steps described here can be easily adapted to other HPC systems. Typically, only a few settings—such as the partition name, account name, and GPU or CPU resource specifications—need to be modified when switching clusters. About 80% of the workflow remains the same, assuming the system uses SLURM as its scheduler.",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>HPC Workflow</span>"
+    ]
+  },
+  {
+    "objectID": "hpc_workflows.html#initial-preparation",
+    "href": "hpc_workflows.html#initial-preparation",
+    "title": "HPC Workflow",
+    "section": "Initial Preparation",
+    "text": "Initial Preparation\nBefore you begin, ensure that:\n\nYou have active CSC accounts.\nYou are connected to the university network (or connected via VPN).\n\nThen, prepare your working environment as follows:\n\nLog in to the cluster\nFor example, to log in to LUMI:\nssh &lt;your_csc_username&gt;@lumi.csc.fi\nThis connects you to the login node. Do not run resource-intensive jobs on the login node—it is shared and has limited resources.\nNavigate to your working directory\nOn LUMI, switch to your scratch space and create a project folder:\ncd /scratch/&lt;project&gt;\nmkdir -p &lt;your_username&gt;/&lt;your_project&gt;\ncd &lt;your_username&gt;/&lt;your_project&gt;\nDo not store large project files (such as data and code) in your home directory, as its storage space is limited. Also note that data stored in the scratch space are temporary and may be deleted automatically—keep that in mind when organizing your work.\nUpload your data and code\nTransfer datasets, scripts, and source code into your project directory using scp, rsync, or git clone.\nSet up your software environment\nThere are several ways to manage Python environments on HPC systems. This guide does not cover those in detail, but for LUMI-specific guidance, refer to the official documentation: Python on LUMI\n\nWith your environment ready, you can start submitting and managing SLURM jobs.",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>HPC Workflow</span>"
+    ]
+  },
+  {
+    "objectID": "hpc_workflows.html#running-jobs",
+    "href": "hpc_workflows.html#running-jobs",
+    "title": "HPC Workflow",
+    "section": "Running Jobs",
+    "text": "Running Jobs\nWhen submitting a job to LUMI, you must specify the target partition. A list of available partitions is available in the LUMI documentation: LUMI Partitions. Check the availability and type of resources offered by each partition—for example, whether your job requires GPUs or can run on CPU-only nodes.\nThere are two main ways to run jobs:\n\nInteractive jobs – useful for debugging or interactive exploration.\nBatch jobs – for longer, unattended runs using a SLURM batch script.\n\nAlways start with a small test job to verify that your script runs correctly. This helps catch issues early and avoid wasting large-scale resources.\n\nInteractive Job\nInteractive sessions allow you to log in to a compute node with an allocated shell, ideal for testing and debugging.\nsalloc --nodes=1 --account=&lt;project&gt; --partition=&lt;partition&gt; --time=00:30:00\nExplanation of flags:\n\n--nodes=1: allocates one node\n--account=&lt;project&gt;: your LUMI project name\n--partition=&lt;partition&gt;: e.g., small, standard, or standard-g\n--time=00:30:00: time limit in HH:MM:SS\n\nAfter allocation, you’ll get an interactive shell on the compute node. For more details, see LUMI’s Interactive Jobs Guide.\n\n\nBatch Job\nFor longer, automated runs, use a SLURM batch script. Here is a minimal example:\nCreate a script run_job.sh:\n#!/bin/bash\n\n# ───── SBATCH directives ───────────────────────────────────────────\n#SBATCH --account=&lt;project&gt;            # Project/account to charge\n#SBATCH --job-name=&lt;your_job_name&gt;     # Descriptive job name\n#SBATCH --partition=standard-g         # Queue/partition (e.g., GPU-enabled)\n#SBATCH --nodes=1                      # Number of nodes\n#SBATCH --ntasks-per-node=1            # MPI tasks per node\n#SBATCH --cpus-per-task=16             # CPU cores per task\n#SBATCH --gres=gpu:1                   # Number of GPUs\n#SBATCH --mem=32GB                     # RAM requested\n#SBATCH --time=05:00:00                # Max wall time (HH:MM:SS)\n#SBATCH --output=slurm_log/%x_%A.out   # Log path: jobname_jobID.out\n\n# ───── Environment setup ───────────────────────────────────────────\nexport PATH=\"/scratch/&lt;project&gt;/&lt;env_name&gt;/bin:$PATH\"\ncd $SLURM_SUBMIT_DIR\nexport PYTHONPATH=$PWD\n\n# ───── Execute ─────────────────────────────────────────────────────\nsrun python -m your_python_script.py\nSubmit the job using the sbatch command, which sends your batch script to the SLURM scheduler:\nsbatch run_job.sh\nWait for the job to enter the queue and start. Running multiple jobs in parallel is possible; refer to the official documentation for advanced array jobs: LUMI Throughput.",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>HPC Workflow</span>"
+    ]
+  },
+  {
+    "objectID": "hpc_workflows.html#monitoring-and-logs",
+    "href": "hpc_workflows.html#monitoring-and-logs",
+    "title": "HPC Workflow",
+    "section": "Monitoring and Logs",
+    "text": "Monitoring and Logs\n\nMonitoring Your Job\nAfter you submit a job with sbatch, SLURM assigns it a unique job ID. You can use this ID to monitor the job’s status and resource usage.\nTo check the status of all your jobs:\nsqueue --user=$USER\nTo check the status of a specific job:\nsqueue -j &lt;jobID&gt;\nTo automatically refresh the job status every few seconds, use the watch command. For example:\nwatch squeue --user=$USER\nThis keeps re-running the squeue command and updates the display every 2 seconds by default.\nTo monitor resource usage of a running or completed job:\nseff &lt;jobID&gt;\nIf your job is underutilizing requested resources, adjust future jobs accordingly to save compute credits.\nYou can also run slurm history to view a list of your past jobs, including their IDs, states, and runtimes. This can be useful for tracking completed jobs or troubleshooting issues.\n\n\nInspecting Logs\nLogs are saved in the path specified in your script (under slurm_log/ if you use above script). These log files usually include standard output (stdout) and standard error (stderr) streams from your job:\nslurm_log/&lt;your_job_name&gt;_&lt;jobID&gt;.out\nCheck logs after each run—they contain important information for debugging and performance tuning.",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>HPC Workflow</span>"
+    ]
+  },
+  {
+    "objectID": "hpc_workflows.html#references",
+    "href": "hpc_workflows.html#references",
+    "title": "HPC Workflow",
+    "section": "References",
+    "text": "References\n\nhttps://scicomp.aalto.fi/triton/tut/intro/#example-project",
+    "crumbs": [
+      "HPC resources",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>HPC Workflow</span>"
+    ]
+  },
+  {
     "objectID": "gp_and_bo.html",
     "href": "gp_and_bo.html",
     "title": "Resources for Gaussian processes and Bayesian optimization",
@@ -116,7 +171,7 @@
     "text": "Gaussian Processes\n\nGortler et al. (2019). A Visual Exploration of Gaussian Processes. Distill\nVideos and tutorials from the Gaussian Process Summer School: GPSS 2021 Program\n\nStart with the first video, “Intro to GPs”, and the sessions on “Kernel Design” and “Representation Learning with GPs” (other videos can be explored later as time permits).\n\nTutorials/workshops (Jupyter notebooks): GPSS 2021 Labs\nThe GP Bible by Rasmussen and Williams (2006): Gaussian Processes for Machine Learning\n\n\n\nBayesian Optimization\n\nExploring Bayesian Optimization (Agnihotri and Batra 2020). Distill\nFrazier (2018). A Tutorial on Bayesian Optimization. arXiv\nVideo: “Introduction to Bayesian Optimization” from the Gaussian Process Summer School, Day 3: GPSS 2021 Day 3\nThe Bayesian Optimization Book by Garnett (2023): BayesOptBook\n\n\n\nSlack Channel\n\nJoin and check out the #gaussian-processes channel on the lab Slack.\n\n\n\n\n\nAgnihotri, Apoorv, and Nipun Batra. 2020. “Exploring Bayesian Optimization.” Distill. https://doi.org/10.23915/distill.00026.\n\n\nGarnett, Roman. 2023. Bayesian Optimization. Cambridge University Press.\n\n\nRasmussen, Carl Edward, and Christopher KI Williams. 2006. Gaussian Processes for Machine Learning. Vol. 2. 3. MIT press Cambridge, MA.",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Resources for Gaussian processes and Bayesian optimization</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Resources for Gaussian processes and Bayesian optimization</span>"
     ]
   },
   {
@@ -127,7 +182,7 @@
     "text": "Ongoing",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Seminars</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seminars</span>"
     ]
   },
   {
@@ -138,7 +193,7 @@
     "text": "Machine Learning Coffee seminars\nAalto Seminar on Advances in Probabilistic Machine Learning [APML]\nSeminar on Gaussian Processes, Spatiotemporal Modeling, and Decision-making Systems",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Seminars</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seminars</span>"
     ]
   },
   {
@@ -149,7 +204,7 @@
     "text": "Interesting Channels\n\nSecondmind Labs Research seminars",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Seminars</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seminars</span>"
     ]
   },
   {
@@ -160,7 +215,7 @@
     "text": "Prerequisites\nTo organize the ML seminar, ensure you have the following access and resources:\nBefore beginning your tasks, complete these access requests:",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
     ]
   },
   {
@@ -171,7 +226,7 @@
     "text": "University of Helsinki user account\nKey to Computer Science Department to access room A318\n\n\n\nFCAI Squarespace and YouTube channel access: Contact Kaisa Pekkala (kaisa.pekkala@aalto.fi).\nFCAI speakers and participants documents: Request access from Luigi.\nZoom Meeting Ownership: Request ownership transfer from the previous organizer.\n\n\nZoom Meeting Ownership Transfer\n\nSign in to Zoom with your University of Helsinki account.\nGo to Settings → Meetings.\nScroll to the bottom and select Schedule Privilege → Edit and Add.\nEnter the previous owner’s university email and select their name.\nAsk the previous owner to transfer room ownership to you:\n\nThey should go to Zoom, locate MLCS Kumpula under Meetings, choose Edit and Schedule For, select your name, and save.\nMore information on Zoom ownership transfer.",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
     ]
   },
   {
@@ -182,7 +237,7 @@
     "text": "Tasks\n\nPre-Seminar Tasks\n\nCreate Event on Squarespace:\n\nDuplicate an existing event if preferred, but update Options → Event URL to reflect the new event.\n\nSend Advertising Email:\n\nConfirm with the ML seminar team (mlseminar@hiit.fi) that the announcement has been sent.\n\nReserve Microphone:\n\nReserve a Blackstorm Scout USB microphone from IT support (helpdesk@helsinki.fi).\n\nPrint Attendance List",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
     ]
   },
   {
@@ -193,7 +248,7 @@
     "text": "Seminar Day Checklist\n\nEquipment Setup\n\nGet Equipment:\n\nPick up the Blackstorm Scout microphone (USB) from IT support (the microphone is stored in room A216, has black and purple box).\nRetrieve the Owl camera from meeting room A318 (stored in a white box on the side table by the door).\n\nClassroom Setup: Setting up the classroom for the hybrid seminar (in-person and Zoom attendees) can be tricky so ensure to test in advance for the first time. There are two main setups to consider:\n\nUsing your own laptop without the classroom computer:\n\nConnect the microphone and Owl camera to your laptop. You could test in advance to ensure they work with your laptop.\nPosition the Owl camera on the table in front of the podium.\nStart the Zoom meeting from your laptop\nLet the speaker join the Zoom meeting from their laptop, muting the speaker’s laptop microphone and turning off the camera. The speaker should use the microphone connected to your laptop.\nConnect the speaker’s laptop to the projector and share their screen.\nIf the projector doesn’t work with the speaker’s laptop, you can connect your laptop for sharing the speaker’s screen, which is less ideal since it will have some Zoom toolbar visible on the screen.\nStart recording in Zoom.\n\nUsing the classsroom computer:\n\nConnect the microphone and Owl camera to the classroom computer. Some classroom computers might not work well, so you might need to use your laptop instead. See the previous setup for details.\nStart the projector.\nStart the Zoom meeting from your laptop.\nLet the speaker join the Zoom meeting from their laptop.\nLog into Zoom from the classroom computer (you’ll need the university account for login) and share the meeting to the projector screen.\nStart recording in Zoom\n\n\n\n\n\nZoom Meeting Management\n\nRecord the session on your laptop.\nMonitor Zoom chat and read questions aloud if needed.\nNote the number of Zoom attendees.\n\n\n\nAttendance Tracking\n\nCirculate the attendance list and a pen once the talk begins.\nMake a note of the Zoom attendance count.",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
     ]
   },
   {
@@ -204,7 +259,7 @@
     "text": "Post-Seminar Tasks\n\nReturn Equipment:\n\nReturn the microphone and Owl camera to their respective storage locations.\n\nHandle Leftover Food:\n\nMove any leftover food to the coffee room on the second floor of the CS department.\n\nRecord Attendance:\n\nUpdate the attendance in the FCAI participants document.\n\nEdit and Upload Video:\n\nUse QuickTime or a similar tool for video editing.\nUpload the edited video to YouTube.\n\n\n\nYouTube Upload Instructions\n\nTitle: Use the title from the event information.\nDescription: Include the abstract and speaker details from the event information.\nPlaylist: Add the video to the Machine Learning Coffee Seminar playlist.\nAudience: Set the audience to not made for kids.",
     "crumbs": [
       "Research topics",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Machine Learning Coffee Seminar organizing guide</span>"
     ]
   },
   {
@@ -212,10 +267,10 @@
     "href": "contributing.html",
     "title": "Contributing Guide",
     "section": "",
-    "text": "Steps to Contribute",
+    "text": "Steps to Contribute\nHere are the detailed steps to ensure a smooth workflow. It’s simply editting the .qmd file and making pull requests on GitHub. So don’t be scared 😉.",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {
@@ -226,7 +281,7 @@
     "text": "Fork the Repository\nVisit the handbook repository and click on “Fork” to create a copy of the repository under your GitHub account.\nClone the Repository\nClone your fork to your local machine:\ngit clone https://github.com/YOUR_USERNAME/handbook.git\ncd handbook\nCreate a New Branch\nBefore making changes, create a new branch to keep your work organized:\ngit checkout -b your-branch-name\nAdd or Modify Content\n\nWrite or edit a (q)markdown file as needed.\nIf you’re adding a new chapter, create a new .qmd file, then include it under the book: chapters: field in _quarto.yml. For example:\n\n book:\n   chapters:\n     - index.qmd\n     - part: Python tools\n       - your-new-chapter.qmd\nPreview Locally\nTo see your changes before pushing, build and preview the book locally. You could use for example VSCode as the editor and Quarto has a VSCode plugin to help preview the book website locally, see instructions here.\nOr make sure you have Quarto installed, then run in bash terminal:\nquarto preview\nThis will open a live preview in your browser where you can verify your changes.\nCommit and Push Changes\nAfter making sure your changes look good, commit and push them to your fork:\ngit add .\ngit commit -m \"Brief description of your changes\"\ngit push origin your-branch-name\nMake a Pull Request\nGo to the original handbook repository and open a Pull Request from your branch. Provide a brief summary of your changes and mention any specific details reviewers should be aware of.",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {
@@ -237,7 +292,7 @@
     "text": "Additional Resources\nFor more advanced features and customization options, please refer to the Quarto documentation.",
     "crumbs": [
       "Other info",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Contributing Guide</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Contributing Guide</span>"
     ]
   },
   {

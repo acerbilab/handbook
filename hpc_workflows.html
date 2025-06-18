@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Chengkun Li">
-<meta name="dcterms.date" content="2024-11-06">
+<meta name="author" content="Nasrulloh Loka">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>Contributing Guide – Lab Handbook</title>
+<title>HPC Workflow – Lab Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./mlcs_guide.html" rel="prev">
+<link href="./gp_and_bo.html" rel="next">
+<link href="./hpc_commands.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contributing.html">Other info</a></li><li class="breadcrumb-item"><a href="./contributing.html"><span class="chapter-title">Contributing Guide</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hpc_intro.html">HPC resources</a></li><li class="breadcrumb-item"><a href="./hpc_workflows.html"><span class="chapter-title">HPC Workflow</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hpc_workflows.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">HPC Workflow</span></a>
+  <a href="./hpc_workflows.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">HPC Workflow</span></a>
   </div>
 </li>
       </ul>
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Contributing Guide</span></a>
+  <a href="./contributing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Contributing Guide</span></a>
   </div>
 </li>
       </ul>
@@ -253,17 +253,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#steps-to-contribute" id="toc-steps-to-contribute" class="nav-link active" data-scroll-target="#steps-to-contribute">Steps to Contribute</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link active" data-scroll-target="#scope">Scope</a></li>
+  <li><a href="#initial-preparation" id="toc-initial-preparation" class="nav-link" data-scroll-target="#initial-preparation">Initial Preparation</a></li>
+  <li><a href="#running-jobs" id="toc-running-jobs" class="nav-link" data-scroll-target="#running-jobs">Running Jobs</a>
+  <ul class="collapse">
+  <li><a href="#interactive-job" id="toc-interactive-job" class="nav-link" data-scroll-target="#interactive-job">Interactive Job</a></li>
+  <li><a href="#batch-job" id="toc-batch-job" class="nav-link" data-scroll-target="#batch-job">Batch Job</a></li>
+  </ul></li>
+  <li><a href="#monitoring-and-logs" id="toc-monitoring-and-logs" class="nav-link" data-scroll-target="#monitoring-and-logs">Monitoring and Logs</a>
+  <ul class="collapse">
+  <li><a href="#monitoring-your-job" id="toc-monitoring-your-job" class="nav-link" data-scroll-target="#monitoring-your-job">Monitoring Your Job</a></li>
+  <li><a href="#inspecting-logs" id="toc-inspecting-logs" class="nav-link" data-scroll-target="#inspecting-logs">Inspecting Logs</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/contributing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/hpc_workflows.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contributing.html">Other info</a></li><li class="breadcrumb-item"><a href="./contributing.html"><span class="chapter-title">Contributing Guide</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hpc_intro.html">HPC resources</a></li><li class="breadcrumb-item"><a href="./hpc_workflows.html"><span class="chapter-title">HPC Workflow</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Contributing Guide</span></h1>
+<h1 class="title"><span class="chapter-title">HPC Workflow</span></h1>
 </div>
 
 
@@ -273,14 +284,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Chengkun Li </p>
+             <p>Nasrulloh Loka </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 6, 2024</p>
+      <p class="date">June 6, 2026</p>
     </div>
   </div>
   
@@ -298,46 +309,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Here are the detailed steps to ensure a smooth workflow. <strong>It’s simply editting the <code>.qmd</code> file and making pull requests on GitHub</strong>. So don’t be scared 😉.</p>
-<section id="steps-to-contribute" class="level2">
-<h2 class="anchored" data-anchor-id="steps-to-contribute">Steps to Contribute</h2>
+<p>This guide explains how to use High-Performance Computing (HPC) resources available at the University of Helsinki (UH). Currently, we have access to several HPC systems:</p>
 <ol type="1">
-<li><p><strong>Fork the Repository</strong><br>
-Visit the <a href="https://github.com/acerbilab/handbook">handbook repository</a> and click on “Fork” to create a copy of the repository under your GitHub account.</p></li>
-<li><p><strong>Clone the Repository</strong><br>
-Clone your fork to your local machine:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/YOUR_USERNAME/handbook.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> handbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Create a New Branch</strong><br>
-Before making changes, create a new branch to keep your work organized:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> your-branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Add or Modify Content</strong></p>
-<ul>
-<li>Write or edit a <code>(q)markdown</code> file as needed.</li>
-<li>If you’re adding a new chapter, create a new <code>.qmd</code> file, then include it under the <code>book: chapters:</code> field in <a href="https://github.com/acerbilab/handbook/blob/main/_quarto.yml">_quarto.yml</a>. For example:</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">book</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">chapters</span><span class="kw">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> index.qmd</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> </span><span class="fu">part</span><span class="kw">:</span><span class="at"> Python tools</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="kw">-</span><span class="at"> your-new-chapter.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Preview Locally</strong></p>
-<p>To see your changes before pushing, build and preview the book locally. You could use for example VSCode as the editor and Quarto has a VSCode plugin to help preview the book website locally, see instructions <a href="https://quarto.org/docs/tools/vscode.html">here</a>.</p>
-<p>Or make sure you have Quarto installed, then run in bash terminal:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will open a live preview in your browser where you can verify your changes.</p></li>
-<li><p><strong>Commit and Push Changes</strong><br>
-After making sure your changes look good, commit and push them to your fork:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Brief description of your changes"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin your-branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Make a Pull Request</strong><br>
-Go to the original <a href="https://github.com/acerbilab/handbook">handbook repository</a> and open a Pull Request from your branch. Provide a brief summary of your changes and mention any specific details reviewers should be aware of.</p></li>
+<li><p><a href="https://version.helsinki.fi/it-for-science/hpc/-/wikis/home"><strong>Turso</strong></a></p></li>
+<li><p><a href="https://docs.csc.fi/computing/"><strong>Puhti</strong> and <strong>Mahti</strong></a></p></li>
+<li><p><a href="https://docs.lumi-supercomputer.eu/"><strong>LUMI</strong></a></p></li>
 </ol>
+<p>In most cases, LUMI is the preferred choice for training large-scale models, despite its AMD GPU architecture. Puhti and Mahti are scheduled to be replaced by <a href="https://docs.csc.fi/computing/systems-roihu/">Rouhu</a> in 2026. Rouhu has not yet been launched at the time of writing this guide.</p>
+<section id="scope" class="level2">
+<h2 class="anchored" data-anchor-id="scope">Scope</h2>
+<p>This workflow focuses on using <strong>LUMI</strong>. However, the setup steps described here can be easily adapted to other HPC systems. Typically, only a few settings—such as the partition name, account name, and GPU or CPU resource specifications—need to be modified when switching clusters. About 80% of the workflow remains the same, assuming the system uses <a href="https://slurm.schedmd.com/quickstart.html">SLURM</a> as its scheduler.</p>
+<hr>
 </section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p>For more advanced features and customization options, please refer to the <a href="https://quarto.org/docs/books/">Quarto documentation</a>.</p>
+<section id="initial-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="initial-preparation">Initial Preparation</h2>
+<p>Before you begin, ensure that:</p>
+<ul>
+<li><p>You have active <a href="https://my.csc.fi/">CSC accounts</a>.</p></li>
+<li><p>You are connected to the university network (or connected via <a href="https://helpdesk.it.helsinki.fi/en/logging-and-connections/networks/connections-outside-university">VPN</a>).</p></li>
+</ul>
+<p>Then, prepare your working environment as follows:</p>
+<ol type="1">
+<li><p><strong>Log in to the cluster</strong><br>
+For example, to log in to LUMI:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>your_csc_username<span class="op">&gt;</span>@lumi.csc.fi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This connects you to the <em>login node</em>. <strong>Do not</strong> run resource-intensive jobs on the login node—it is shared and has limited resources.</p></li>
+<li><p><strong>Navigate to your working directory</strong><br>
+On LUMI, switch to your <a href="https://docs.lumi-supercomputer.eu/storage/#__tabbed_1_3">scratch space</a> and create a project folder:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /scratch/<span class="op">&lt;</span>project<span class="op">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="op">&lt;</span>your_username<span class="op">&gt;</span>/<span class="op">&lt;</span>your_project<span class="op">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>your_username<span class="op">&gt;</span>/<span class="op">&lt;</span>your_project<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Do not</strong> store large project files (such as data and code) in your home directory, as its storage space is limited. Also note that data stored in the scratch space are temporary and may be deleted automatically—keep that in mind when organizing your work.</p></li>
+<li><p><strong>Upload your data and code</strong><br>
+Transfer datasets, scripts, and source code into your project directory using <code>scp</code>, <code>rsync</code>, or <code>git clone</code>.</p></li>
+<li><p><strong>Set up your software environment</strong><br>
+There are several ways to manage Python environments on HPC systems. This guide does not cover those in detail, but for LUMI-specific guidance, refer to the official documentation: <a href="https://docs.lumi-supercomputer.eu/software/installing/python/">Python on LUMI</a></p></li>
+</ol>
+<p>With your environment ready, you can start submitting and managing SLURM jobs.</p>
+</section>
+<section id="running-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="running-jobs">Running Jobs</h2>
+<p>When submitting a job to LUMI, you must specify the target partition. A list of available partitions is available in the LUMI documentation: <a href="https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/">LUMI Partitions</a>. Check the availability and type of resources offered by each partition—for example, whether your job requires GPUs or can run on CPU-only nodes.</p>
+<p>There are two main ways to run jobs:</p>
+<ol type="1">
+<li><p><strong>Interactive jobs</strong> – useful for debugging or interactive exploration.</p></li>
+<li><p><strong>Batch jobs</strong> – for longer, unattended runs using a SLURM batch script.</p></li>
+</ol>
+<p><strong>Always</strong> start with a small test job to verify that your script runs correctly. This helps catch issues early and avoid wasting large-scale resources.</p>
+<section id="interactive-job" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-job">Interactive Job</h3>
+<p>Interactive sessions allow you to log in to a compute node with an allocated shell, ideal for testing and debugging.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">salloc</span> <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--account</span><span class="op">=&lt;</span>project<span class="op">&gt;</span> --partition=<span class="op">&lt;</span>partition<span class="op">&gt;</span> --time=00:30:00</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Explanation of flags:</p>
+<ul>
+<li><p><code>--nodes=1</code>: allocates one node</p></li>
+<li><p><code>--account=&lt;project&gt;</code>: your LUMI project name</p></li>
+<li><p><code>--partition=&lt;partition&gt;</code>: e.g., <code>small</code>, <code>standard</code>, or <code>standard-g</code></p></li>
+<li><p><code>--time=00:30:00</code>: time limit in HH:MM:SS</p></li>
+</ul>
+<p>After allocation, you’ll get an interactive shell on the compute node. For more details, see LUMI’s <a href="https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/">Interactive Jobs Guide</a>.</p>
+</section>
+<section id="batch-job" class="level3">
+<h3 class="anchored" data-anchor-id="batch-job">Batch Job</h3>
+<p>For longer, automated runs, use a SLURM batch script. Here is a minimal example:</p>
+<p>Create a script <code>run_job.sh</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ───── SBATCH directives ───────────────────────────────────────────</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=&lt;project&gt;            # Project/account to charge</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=&lt;your_job_name&gt;     # Descriptive job name</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=standard-g         # Queue/partition (e.g., GPU-enabled)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1                      # Number of nodes</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks-per-node=1            # MPI tasks per node</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=16             # CPU cores per task</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --gres=gpu:1                   # Number of GPUs</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=32GB                     # RAM requested</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=05:00:00                # Max wall time (HH:MM:SS)</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=slurm_log/%x_%A.out   # Log path: jobname_jobID.out</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ───── Environment setup ───────────────────────────────────────────</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">"/scratch/&lt;project&gt;/&lt;env_name&gt;/bin:</span><span class="va">$PATH</span><span class="st">"</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$SLURM_SUBMIT_DIR</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYTHONPATH</span><span class="op">=</span><span class="va">$PWD</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ───── Execute ─────────────────────────────────────────────────────</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> python <span class="at">-m</span> your_python_script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Submit the job using the <code>sbatch</code> command, which sends your batch script to the SLURM scheduler:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run_job.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Wait for the job to enter the queue and start. Running multiple jobs in parallel is possible; refer to the official documentation for advanced array jobs: <a href="https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/throughput/">LUMI Throughput</a>.</p>
+</section>
+</section>
+<section id="monitoring-and-logs" class="level2">
+<h2 class="anchored" data-anchor-id="monitoring-and-logs">Monitoring and Logs</h2>
+<section id="monitoring-your-job" class="level3">
+<h3 class="anchored" data-anchor-id="monitoring-your-job">Monitoring Your Job</h3>
+<p>After you submit a job with <code>sbatch</code>, SLURM assigns it a unique job ID. You can use this ID to monitor the job’s status and resource usage.</p>
+<p>To check the status of all your jobs:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">--user</span><span class="op">=</span><span class="va">$USER</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To check the status of a specific job:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-j</span> <span class="op">&lt;</span>jobID<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To automatically refresh the job status every few seconds, use the <code>watch</code> command. For example:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> squeue <span class="at">--user</span><span class="op">=</span><span class="va">$USER</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This keeps re-running the <code>squeue</code> command and updates the display every 2 seconds by default.</p>
+<p>To monitor resource usage of a running or completed job:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seff</span> <span class="op">&lt;</span>jobID<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If your job is underutilizing requested resources, adjust future jobs accordingly to save compute credits.</p>
+<p>You can also run slurm history to view a list of your past jobs, including their IDs, states, and runtimes. This can be useful for tracking completed jobs or troubleshooting issues.</p>
+</section>
+<section id="inspecting-logs" class="level3">
+<h3 class="anchored" data-anchor-id="inspecting-logs">Inspecting Logs</h3>
+<p>Logs are saved in the path specified in your script (under <code>slurm_log/</code> if you use above script). These log files usually include standard output (stdout) and standard error (stderr) streams from your job:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">slurm_log/</span><span class="op">&lt;</span>your_job_name<span class="op">&gt;</span>_<span class="op">&lt;</span>jobID<span class="op">&gt;</span>.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check logs after each run—they contain important information for debugging and performance tuning.</p>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://scicomp.aalto.fi/triton/tut/intro/#example-project">https://scicomp.aalto.fi/triton/tut/intro/#example-project</a></li>
+</ul>
 
 
 </section>
@@ -744,13 +834,13 @@ Go to the original <a href="https://github.com/acerbilab/handbook">handbook repo
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mlcs_guide.html" class="pagination-link" aria-label="Machine Learning Coffee Seminar organizing guide">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Machine Learning Coffee Seminar organizing guide</span></span>
+      <a href="./hpc_commands.html" class="pagination-link" aria-label="Useful commands">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Useful commands</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Bibliography">
-        <span class="nav-page-text">Bibliography</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./gp_and_bo.html" class="pagination-link" aria-label="Resources for Gaussian processes and Bayesian optimization">
+        <span class="nav-page-text"><span class="chapter-title">Resources for Gaussian processes and Bayesian optimization</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -759,4 +849,4 @@ Go to the original <a href="https://github.com/acerbilab/handbook">handbook repo
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/contributing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/acerbilab/handbook/edit/main/hpc_workflows.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
