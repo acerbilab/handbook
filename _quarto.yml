@@ -16,6 +16,7 @@ book:
       chapters:
         - hpc_intro.qmd
         - hpc_commands.qmd
+        - hpc_workflows.qmd
     - part: Research topics
       chapters:
         - gp_and_bo.qmd

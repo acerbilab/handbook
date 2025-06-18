@@ -1,0 +1,186 @@
+---
+date: "2025-18-06"
+date-modified: last-modified
+author:
+  - name: Nasrulloh Loka
+---
+
+# HPC Workflow
+
+This guide explains how to use High-Performance Computing (HPC) resources available at the University of Helsinki (UH). Currently, we have access to several HPC systems:
+
+1. [**Turso**](https://version.helsinki.fi/it-for-science/hpc/-/wikis/home)
+
+2. [**Puhti** and **Mahti**](https://docs.csc.fi/computing/)
+
+3. [**LUMI**](https://docs.lumi-supercomputer.eu/)
+
+In most cases, LUMI is the preferred choice for training large-scale models, despite its AMD GPU architecture. Puhti and Mahti are scheduled to be replaced by [Rouhu](https://docs.csc.fi/computing/systems-roihu/) in 2026. Rouhu has not yet been launched at the time of writing this guide.
+
+## Scope
+
+This workflow focuses on using **LUMI**. However, the setup steps described here can be easily adapted to other HPC systems. Typically, only a few settings—such as the partition name, account name, and GPU or CPU resource specifications—need to be modified when switching clusters. About 80% of the workflow remains the same, assuming the system uses [SLURM](https://slurm.schedmd.com/quickstart.html) as its scheduler.
+
+---
+
+## Initial Preparation
+
+Before you begin, ensure that:
+
+- You have active [CSC accounts](https://my.csc.fi/).
+    
+- You are connected to the university network (or connected via [VPN](https://helpdesk.it.helsinki.fi/en/logging-and-connections/networks/connections-outside-university)).
+    
+
+Then, prepare your working environment as follows:
+
+1. **Log in to the cluster**  
+    For example, to log in to LUMI:
+    
+    ```bash
+    ssh <your_csc_username>@lumi.csc.fi
+    ```
+    
+    This connects you to the _login node_. **Do not** run resource-intensive jobs on the login node—it is shared and has limited resources.
+    
+2. **Navigate to your working directory**  
+    On LUMI, switch to your [scratch space](https://docs.lumi-supercomputer.eu/storage/#__tabbed_1_3) and create a project folder:
+    
+    ```bash
+    cd /scratch/<project>
+    mkdir -p <your_username>/<your_project>
+    cd <your_username>/<your_project>
+    ```
+
+    **Do not** store large project files (such as data and code) in your home directory, as its storage space is limited. Also note that data stored in the scratch space are temporary and may be deleted automatically—keep that in mind when organizing your work.
+
+    
+3. **Upload your data and code**  
+    Transfer datasets, scripts, and source code into your project directory using `scp`, `rsync`, or `git clone`.
+    
+4. **Set up your software environment**  
+    There are several ways to manage Python environments on HPC systems. This guide does not cover those in detail, but for LUMI-specific guidance, refer to the official documentation: [Python on LUMI](https://docs.lumi-supercomputer.eu/software/installing/python/)
+    
+
+With your environment ready, you can start submitting and managing SLURM jobs.
+
+## Running Jobs
+
+When submitting a job to LUMI, you must specify the target partition. A list of available partitions is available in the LUMI documentation: [LUMI Partitions](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/). Check the availability and type of resources offered by each partition—for example, whether your job requires GPUs or can run on CPU-only nodes.
+
+There are two main ways to run jobs:
+
+1. **Interactive jobs** – useful for debugging or interactive exploration.
+
+2. **Batch jobs** – for longer, unattended runs using a SLURM batch script.
+
+**Always** start with a small test job to verify that your script runs correctly. This helps catch issues early and avoid wasting large-scale resources.
+
+### Interactive Job
+
+Interactive sessions allow you to log in to a compute node with an allocated shell, ideal for testing and debugging.
+
+```bash
+salloc --nodes=1 --account=<project> --partition=<partition> --time=00:30:00
+```
+
+Explanation of flags:
+
+- `--nodes=1`: allocates one node
+
+- `--account=<project>`: your LUMI project name
+    
+- `--partition=<partition>`: e.g., `small`, `standard`, or `standard-g`
+    
+- `--time=00:30:00`: time limit in HH:MM:SS
+    
+
+After allocation, you’ll get an interactive shell on the compute node. For more details, see LUMI's [Interactive Jobs Guide](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/).
+
+### Batch Job
+
+For longer, automated runs, use a SLURM batch script. Here is a minimal example:
+
+Create a script `run_job.sh`:
+
+```bash
+#!/bin/bash
+
+# ───── SBATCH directives ───────────────────────────────────────────
+#SBATCH --account=<project>            # Project/account to charge
+#SBATCH --job-name=<your_job_name>     # Descriptive job name
+#SBATCH --partition=standard-g         # Queue/partition (e.g., GPU-enabled)
+#SBATCH --nodes=1                      # Number of nodes
+#SBATCH --ntasks-per-node=1            # MPI tasks per node
+#SBATCH --cpus-per-task=16             # CPU cores per task
+#SBATCH --gres=gpu:1                   # Number of GPUs
+#SBATCH --mem=32GB                     # RAM requested
+#SBATCH --time=05:00:00                # Max wall time (HH:MM:SS)
+#SBATCH --output=slurm_log/%x_%A.out   # Log path: jobname_jobID.out
+
+# ───── Environment setup ───────────────────────────────────────────
+export PATH="/scratch/<project>/<env_name>/bin:$PATH"
+cd $SLURM_SUBMIT_DIR
+export PYTHONPATH=$PWD
+
+# ───── Execute ─────────────────────────────────────────────────────
+srun python -m your_python_script.py
+```
+
+Submit the job using the `sbatch` command, which sends your batch script to the SLURM scheduler:
+
+```bash
+sbatch run_job.sh
+```
+
+Wait for the job to enter the queue and start. Running multiple jobs in parallel is possible; refer to the official documentation for advanced array jobs: [LUMI Throughput](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/throughput/).
+
+## Monitoring and Logs
+
+### Monitoring Your Job
+
+After you submit a job with `sbatch`, SLURM assigns it a unique job ID. You can use this ID to monitor the job's status and resource usage.
+
+To check the status of all your jobs:
+
+```bash
+squeue --user=$USER
+```
+
+To check the status of a specific job:
+
+```bash
+squeue -j <jobID>
+```
+
+To automatically refresh the job status every few seconds, use the `watch` command. For example:
+
+```bash
+watch squeue --user=$USER
+```
+
+This keeps re-running the `squeue` command and updates the display every 2 seconds by default.
+
+To monitor resource usage of a running or completed job:
+
+```bash
+seff <jobID>
+```
+
+If your job is underutilizing requested resources, adjust future jobs accordingly to save compute credits.
+
+You can also run slurm history to view a list of your past jobs, including their IDs, states, and runtimes. This can be useful for tracking completed jobs or troubleshooting issues.
+
+### Inspecting Logs
+
+Logs are saved in the path specified in your script (under `slurm_log/` if you use above script). These log files usually include standard output (stdout) and standard error (stderr) streams from your job:
+
+```bash
+slurm_log/<your_job_name>_<jobID>.out
+```
+
+Check logs after each run—they contain important information for debugging and performance tuning.
+
+## References
+
+- [https://scicomp.aalto.fi/triton/tut/intro/#example-project](https://scicomp.aalto.fi/triton/tut/intro/#example-project)
