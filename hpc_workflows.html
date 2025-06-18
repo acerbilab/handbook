@@ -318,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In most cases, LUMI is the preferred choice for training large-scale models, despite its AMD GPU architecture. Puhti and Mahti are scheduled to be replaced by <a href="https://docs.csc.fi/computing/systems-roihu/">Rouhu</a> in 2026. Rouhu has not yet been launched at the time of writing this guide.</p>
 <section id="scope" class="level2">
 <h2 class="anchored" data-anchor-id="scope">Scope</h2>
-<p>This workflow focuses on using <strong>LUMI</strong>. However, the setup steps described here can be easily adapted to other HPC systems. Typically, only a few settings—such as the partition name, account name, and GPU or CPU resource specifications—need to be modified when switching clusters. About 80% of the workflow remains the same, assuming the system uses <a href="https://slurm.schedmd.com/quickstart.html">SLURM</a> as its scheduler.</p>
+<p>This workflow focuses on using <strong>LUMI</strong>. However, the steps described here can be easily adapted to other HPC systems. Typically, only a few settings—such as the partition name, account name, and GPU or CPU resource specifications—need to be modified when switching clusters. About 80% of the workflow remains the same, assuming the system uses <a href="https://slurm.schedmd.com/quickstart.html">SLURM</a> as its scheduler.</p>
 <hr>
 </section>
 <section id="initial-preparation" class="level2">
@@ -367,7 +367,7 @@ There are several ways to manage Python environments on HPC systems. This guide 
 <li><p><code>--partition=&lt;partition&gt;</code>: e.g., <code>small</code>, <code>standard</code>, or <code>standard-g</code></p></li>
 <li><p><code>--time=00:30:00</code>: time limit in HH:MM:SS</p></li>
 </ul>
-<p>After allocation, you’ll get an interactive shell on the compute node. For more details, see LUMI’s <a href="https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/">Interactive Jobs Guide</a>.</p>
+<p>After allocation, you’ll get an interactive shell on the compute node. Note that the required flags and their formats might differ across HPC systems. For more details, see LUMI’s <a href="https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/">Interactive Jobs Guide</a>.</p>
 </section>
 <section id="batch-job" class="level3">
 <h3 class="anchored" data-anchor-id="batch-job">Batch Job</h3>
@@ -414,7 +414,7 @@ There are several ways to manage Python environments on HPC systems. This guide 
 <p>To monitor resource usage of a running or completed job:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seff</span> <span class="op">&lt;</span>jobID<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If your job is underutilizing requested resources, adjust future jobs accordingly to save compute credits.</p>
-<p>You can also run slurm history to view a list of your past jobs, including their IDs, states, and runtimes. This can be useful for tracking completed jobs or troubleshooting issues.</p>
+<p>You can also run <code>slurm history</code> to view a list of your past jobs, including their IDs, states, and runtimes. This can be useful for tracking completed jobs or troubleshooting issues.</p>
 </section>
 <section id="inspecting-logs" class="level3">
 <h3 class="anchored" data-anchor-id="inspecting-logs">Inspecting Logs</h3>
